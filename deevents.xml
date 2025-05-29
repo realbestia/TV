@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tv>
+  <channel id="GERMANLEAGUEBraunschweigvsWurzburg">
+    <display-name>GERMAN LEAGUE : Braunschweig vs Wurzburg</display-name>
+  </channel>
+  <programme start="20250529000000 +0200" stop="20250529200000 +0200" channel="GERMANLEAGUEBraunschweigvsWurzburg">
+    <title lang="it">Fängt um 20:00 an.</title>
+    <desc lang="it">GERMAN LEAGUE : Braunschweig vs Wurzburg.</desc>
+    <category lang="it">Bekanntmachung</category>
+  </programme>
+  <programme start="20250529200000 +0200" stop="20250529220000 +0200" channel="GERMANLEAGUEBraunschweigvsWurzburg">
+    <title lang="it">Live Streaming.</title>
+    <desc lang="it">GERMAN LEAGUE : Braunschweig vs Wurzburg</desc>
+    <category lang="it">Basketball</category>
+  </programme>
+  <channel id="SuperLeagueRugbyHuddersfieldvsLeighCenturions">
+    <display-name>Super League Rugby : Huddersfield vs Leigh Centurions</display-name>
+  </channel>
+  <programme start="20250529000000 +0200" stop="20250529210000 +0200" channel="SuperLeagueRugbyHuddersfieldvsLeighCenturions">
+    <title lang="it">Fängt um 21:00 an.</title>
+    <desc lang="it">Super League Rugby : Huddersfield vs Leigh Centurions.</desc>
+    <category lang="it">Bekanntmachung</category>
+  </programme>
+  <programme start="20250529210000 +0200" stop="20250529230000 +0200" channel="SuperLeagueRugbyHuddersfieldvsLeighCenturions">
+    <title lang="it">Live Streaming.</title>
+    <desc lang="it">Super League Rugby : Huddersfield vs Leigh Centurions</desc>
+    <category lang="it">Rugby League</category>
+  </programme>
+</tv>
