@@ -1,28 +1,13 @@
-#EXTM3U x-tvg-url="https://raw.githubusercontent.com/realbestia/itatv/refs/heads/main/deevents.xml"
+#EXTM3U
 #EXTINF:-1 tvg-name="Soccer" group-title="Eventi Live",--- Soccer ---
-https://example.m3u8
+https://exemple.m3u8
 
-#EXTINF:-1 tvg-id="franceligue1reimsvsmetz" tvg-name="France - Ligue 1 : Reims vs Metz (20:30)" tvg-logo="https://raw.githubusercontent.com/realbestia/TV/main/logos/Reims_vs_Metz.png" group-title="Eventi Live",France - Ligue 1 : Reims vs Metz (20:30)
-https://daddylive.dad/embed/stream-426.php
-
-#EXTINF:-1 tvg-name="Basketball" group-title="Eventi Live",--- Basketball ---
-https://example.m3u8
-
-#EXTINF:-1 tvg-id="germanleaguebraunschweigvswurzburg" tvg-name="GERMAN LEAGUE : Braunschweig vs Wurzburg (20:00)" tvg-logo="https://raw.githubusercontent.com/realbestia/TV/main/logos/Braunschweig_vs_Wurzburg.png" group-title="Eventi Live",GERMAN LEAGUE : Braunschweig vs Wurzburg (20:00)
-https://daddylive.dad/embed/stream-9.php
-
-#EXTINF:-1 tvg-name="Darts" group-title="Eventi Live",--- Darts ---
-https://example.m3u8
-
-#EXTINF:-1 tvg-id="premierleaguedartsnewcastlelukelittlervsgerwynprice" tvg-name="Premier League Darts - Newcastle : Luke Littler vs Gerwyn Price (20:00)" tvg-logo="https://raw.githubusercontent.com/realbestia/TV/main/logos/Luke Littler_vs_Gerwyn Price.png" group-title="Eventi Live",Premier League Darts - Newcastle : Luke Littler vs Gerwyn Price (20:00)
-https://daddylive.dad/embed/stream-427.php
-
-#EXTINF:-1 tvg-id="premierleaguedartsnewcastlelukelittlervsgerwynprice" tvg-name="Premier League Darts - Newcastle : Luke Littler vs Gerwyn Price (20:00)" tvg-logo="https://raw.githubusercontent.com/realbestia/TV/main/logos/Luke Littler_vs_Gerwyn Price.png" group-title="Eventi Live",Premier League Darts - Newcastle : Luke Littler vs Gerwyn Price (20:00)
-https://daddylive.dad/embed/stream-641.php
+#EXTINF:-1 tvg-id="426" tvg-name="France - Ligue 1 : Reims vs Metz (20:30)" tvg-logo="https://logodownload.org/wp-content/uploads/2019/09/stade-de-reims-logo-0.png" group-title="Eventi Live",France - Ligue 1 : Reims vs Metz (20:30)
+https://ddy6new.newkso.ru/ddy6/premium426/mono.m3u8
 
 #EXTINF:-1 tvg-name="Rugby League" group-title="Eventi Live",--- Rugby League ---
-https://example.m3u8
+https://exemple.m3u8
 
-#EXTINF:-1 tvg-id="superleaguerugbyhuddersfieldvsleighcenturions" tvg-name="Super League Rugby : Huddersfield vs Leigh Centurions (21:00)" tvg-logo="https://raw.githubusercontent.com/realbestia/TV/main/logos/Huddersfield_vs_Leigh Centurions.png" group-title="Eventi Live",Super League Rugby : Huddersfield vs Leigh Centurions (21:00)
-https://daddylive.dad/embed/stream-640.php
+#EXTINF:-1 tvg-id="640" tvg-name="Super League Rugby : Huddersfield vs Leigh Centurions (21:00)" tvg-logo="https://iconape.com/wp-content/files/cu/322778/png/322778.png" group-title="Eventi Live",Super League Rugby : Huddersfield vs Leigh Centurions (21:00)
+https://dokko1new.newkso.ru/dokko1/premium640/mono.m3u8
 
