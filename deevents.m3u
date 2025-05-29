@@ -8,7 +8,7 @@ https://daddylive.dad/embed/stream-426.php
 #EXTINF:-1 tvg-name="Basketball" group-title="Eventi Live",--- Basketball ---
 https://example.m3u8
 
-#EXTINF:-1 tvg-id="germanleaguebraunschweigvswurzburg" tvg-name="GERMAN LEAGUE : Braunschweig vs Wurzburg (20:00)" tvg-logo="https://seeklogo.com/images/E/eintracht-braunschweig-logo-E6E92A1192-seeklogo.com.png" group-title="Eventi Live",GERMAN LEAGUE : Braunschweig vs Wurzburg (20:00)
+#EXTINF:-1 tvg-id="germanleaguebraunschweigvswurzburg" tvg-name="GERMAN LEAGUE : Braunschweig vs Wurzburg (20:00)" tvg-logo="https://raw.githubusercontent.com/realbestia/TV/main/logos/Braunschweig_vs_Wurzburg.png" group-title="Eventi Live",GERMAN LEAGUE : Braunschweig vs Wurzburg (20:00)
 https://daddylive.dad/embed/stream-9.php
 
 #EXTINF:-1 tvg-name="Darts" group-title="Eventi Live",--- Darts ---
