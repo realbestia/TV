@@ -1,0 +1,28 @@
+#EXTM3U
+#EXTINF:-1 tvg-name="Soccer" group-title="Eventi Live",--- Soccer ---
+https://exemple.m3u8
+
+#EXTINF:-1 tvg-id="426" tvg-name="France - Ligue 1 : Reims vs Metz (20:30)" tvg-logo="https://logodownload.org/wp-content/uploads/2019/09/stade-de-reims-logo-0.png" group-title="Eventi Live",France - Ligue 1 : Reims vs Metz (20:30)
+https://ddy6new.newkso.ru/ddy6/premium426/mono.m3u8
+
+#EXTINF:-1 tvg-name="Basketball" group-title="Eventi Live",--- Basketball ---
+https://exemple.m3u8
+
+#EXTINF:-1 tvg-id="9" tvg-name="GERMAN LEAGUE : Braunschweig vs Wurzburg (20:00)" tvg-logo="https://seeklogo.com/images/E/eintracht-braunschweig-logo-E6E92A1192-seeklogo.com.png" group-title="Eventi Live",GERMAN LEAGUE : Braunschweig vs Wurzburg (20:00)
+https://nfsnew.newkso.ru/nfs/premium9/mono.m3u8
+
+#EXTINF:-1 tvg-name="Darts" group-title="Eventi Live",--- Darts ---
+https://exemple.m3u8
+
+#EXTINF:-1 tvg-id="427" tvg-name="Premier League Darts - Newcastle : Luke Littler vs Gerwyn Price (20:00)" tvg-logo="https://mcdart.de/media/800x800x100/a1/95/2c/1704288083/Player_LukeLittler.png" group-title="Eventi Live",Premier League Darts - Newcastle : Luke Littler vs Gerwyn Price (20:00)
+https://ddy6new.newkso.ru/ddy6/premium427/mono.m3u8
+
+#EXTINF:-1 tvg-id="641" tvg-name="Premier League Darts - Newcastle : Luke Littler vs Gerwyn Price (20:00)" tvg-logo="https://www.sk-darts.de/wp-content/uploads/2024/02/Target-Coolplay-Luke-Littler-Dart-Shirt-02.png" group-title="Eventi Live",Premier League Darts - Newcastle : Luke Littler vs Gerwyn Price (20:00)
+https://ddy6new.newkso.ru/ddy6/premium641/mono.m3u8
+
+#EXTINF:-1 tvg-name="Rugby League" group-title="Eventi Live",--- Rugby League ---
+https://exemple.m3u8
+
+#EXTINF:-1 tvg-id="640" tvg-name="Super League Rugby : Huddersfield vs Leigh Centurions (21:00)" tvg-logo="https://iconape.com/wp-content/files/cu/322778/png/322778.png" group-title="Eventi Live",Super League Rugby : Huddersfield vs Leigh Centurions (21:00)
+https://dokko1new.newkso.ru/dokko1/premium640/mono.m3u8
+
