@@ -536,7 +536,7 @@ def eventi_m3u8_generator():
                 if not channels: 
                     continue 
      
-                # Spacer con nome categoria pulito e group-title "Eventi Live" 
+                # Spacer con nome categoria pulito e group-title "Live Events" 
                 f.write(f'#EXTINF:-1 tvg-name="{category}" group-title="Eventi Live",--- {category} ---\nhttps://exemple.m3u8\n\n') 
      
                 for ch in channels: 
@@ -554,7 +554,7 @@ def eventi_m3u8_generator():
                     try: 
                         stream = get_stream_from_channel_id(channel_id) 
                         if stream: 
-                            f.write(f'#EXTINF:-1 tvg-id="{channel_id}" tvg-name="{tvg_name}"{logo_attribute} group-title="Eventi Live",{tvg_name}\n{stream}\n\n') 
+                            f.write(f'#EXTINF:-1 tvg-id="{channel_id}" tvg-name="{tvg_name}"{logo_attribute} group-title="Live Events",{tvg_name}\n{stream}\n\n') 
                             print(f"[✓] {tvg_name}" + (f" (logo trovato)" if logo_url else " (nessun logo trovato)")) 
                         else: 
                             print(f"[✗] {tvg_name} - Nessuno stream trovato") 
