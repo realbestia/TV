@@ -3965,6 +3965,36 @@
                 "channels": []
             },
             {
+                "time": "09:30",
+                "event": "Australia - NPL - Victoria : Heidelberg United vs St Albans Saints",
+                "channels": []
+            },
+            {
+                "time": "09:30",
+                "event": "Australia - NPL - Queensland : Queensland Lions vs Gold Coast Knights",
+                "channels": []
+            },
+            {
+                "time": "09:30",
+                "event": "Australia - NPL - Queensland : Wynnum Wolves vs Gold Coast United",
+                "channels": []
+            },
+            {
+                "time": "09:45",
+                "event": "Australia - NPL - Victoria : Dandenong City vs Dandenong Thunder",
+                "channels": []
+            },
+            {
+                "time": "10:00",
+                "event": "Australia - NPL - NSW - North : Broadmeadow Magic vs New Lambton FC",
+                "channels": []
+            },
+            {
+                "time": "10:00",
+                "event": "Australia - NPL - South : Metro Stars vs Campbelltown City",
+                "channels": []
+            },
+            {
                 "time": "10:00",
                 "event": "Women's Friendly : Australia vs Argentina",
                 "channels": [
@@ -3973,6 +4003,36 @@
                         "channel_id": "3"
                     }
                 ]
+            },
+            {
+                "time": "10:15",
+                "event": "Australia - NPL - Victoria : Oakleigh Cannons vs Port Melbourne Sharks",
+                "channels": []
+            },
+            {
+                "time": "10:30",
+                "event": "Australia - NPL - Victoria : Hume City vs Green Gully",
+                "channels": []
+            },
+            {
+                "time": "10:30",
+                "event": "Australia - NPL (F) - Victoria : Preston Lions (F) vs Box Hill United (F)",
+                "channels": []
+            },
+            {
+                "time": "10:45",
+                "event": "Australia - NPL - South : Adelaide City vs Beograd Woodville",
+                "channels": []
+            },
+            {
+                "time": "10:45",
+                "event": "Australia - NPL - South : West Torrens Birkalla vs Para Hills Knights",
+                "channels": []
+            },
+            {
+                "time": "11:00",
+                "event": "Australia - NPL (F) - South : West Adelaide (F) vs Salisbury Inter (F)",
+                "channels": []
             },
             {
                 "time": "12:00",
@@ -4016,6 +4076,21 @@
                         "channel_id": "605"
                     }
                 ]
+            },
+            {
+                "time": "15:00",
+                "event": "Lithuania - 1 Lyga : FA Siauliai B vs Minija",
+                "channels": []
+            },
+            {
+                "time": "15:00",
+                "event": "Football \tLatvia - Virsliga : FK Jelgava vs Liepaja",
+                "channels": []
+            },
+            {
+                "time": "15:00",
+                "event": "Lithuania - 1 Lyga : Nevezis vs Jonava",
+                "channels": []
             },
             {
                 "time": "15:00",
@@ -4118,6 +4193,11 @@
                         "channel_id": "465"
                     }
                 ]
+            },
+            {
+                "time": "16:00",
+                "event": "Lithuania - A Lyga : Kauno Zalgiris vs DFK Dainava",
+                "channels": []
             },
             {
                 "time": "16:20",
