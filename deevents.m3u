@@ -39,24 +39,15 @@ https://dokko1new.newkso.ru/dokko1/premium640/mono.m3u8
 #EXTINF:-1 tvg-name="Darts" group-title="Eventi Live",--- Darts ---
 https://exemple.m3u8
 
-#EXTINF:-1 tvg-id="pdcdartround1europeantour2025" tvg-name="PDC Dart, round 1 | European Tour 2025 (13:00)" tvg-logo="https://mcdart.de/media/fill/540x540x100/4d/c4/3e/1667565595/4441_Winmau_PDC_Dartboard_Surround_1.png" group-title="Eventi Live",PDC Dart, round 1 | European Tour 2025 (13:00)
+#EXTINF:-1 tvg-id="pdcdartround1europeantour2025" tvg-name="PDC Dart, round 1 | European Tour 2025 (13:00)" tvg-logo="https://mcdart.de/media/4d/c4/3e/1667565595/4441_Winmau_PDC_Dartboard_Surround_1.png" group-title="Eventi Live",PDC Dart, round 1 | European Tour 2025 (13:00)
 https://ddy6new.newkso.ru/ddy6/premium427/mono.m3u8
 
 #EXTINF:-1 tvg-id="pdcdartround1europeantour2025" tvg-name="PDC Dart, round 1 | European Tour 2025 (13:00)" tvg-logo="https://mcdart.de/media/fill/540x540x100/4d/c4/3e/1667565595/4441_Winmau_PDC_Dartboard_Surround_1.png" group-title="Eventi Live",PDC Dart, round 1 | European Tour 2025 (13:00)
 https://ddy6new.newkso.ru/ddy6/premium641/mono.m3u8
 
-#EXTINF:-1 tvg-id="pdcdartround1europeantour2025" tvg-name="PDC Dart, round 1 | European Tour 2025 (19:00)" tvg-logo="https://mcdart.de/media/4d/c4/3e/1667565595/4441_Winmau_PDC_Dartboard_Surround_1.png" group-title="Eventi Live",PDC Dart, round 1 | European Tour 2025 (19:00)
+#EXTINF:-1 tvg-id="pdcdartround1europeantour2025" tvg-name="PDC Dart, round 1 | European Tour 2025 (19:00)" tvg-logo="https://images.squarespace-cdn.com/content/v1/641b2b45926a07705eaad097/944c64c4-4b0a-436a-b1a3-566a56e54f91/Professional_Darts_Corporation_logo.svg+copy.png?format=1500w" group-title="Eventi Live",PDC Dart, round 1 | European Tour 2025 (19:00)
 https://ddy6new.newkso.ru/ddy6/premium427/mono.m3u8
 
 #EXTINF:-1 tvg-id="pdcdartround1europeantour2025" tvg-name="PDC Dart, round 1 | European Tour 2025 (19:00)" tvg-logo="https://mcdart.de/media/fill/540x540x100/4d/c4/3e/1667565595/4441_Winmau_PDC_Dartboard_Surround_1.png" group-title="Eventi Live",PDC Dart, round 1 | European Tour 2025 (19:00)
 https://ddy6new.newkso.ru/ddy6/premium641/mono.m3u8
-
-#EXTINF:-1 tvg-name="Ice Hockey" group-title="Eventi Live",--- Ice Hockey ---
-https://exemple.m3u8
-
-#EXTINF:-1 tvg-id="nhlcarolinahurricanesvsfloridapanthers" tvg-name="NHL : Carolina Hurricanes vs Florida Panthers (02:00)" tvg-logo="https://raw.githubusercontent.com/realbestia/TV/main/logos/Carolina Hurricanes_vs_Florida Panthers.png" group-title="Eventi Live",NHL : Carolina Hurricanes vs Florida Panthers (02:00)
-https://ddy6new.newkso.ru/ddy6/premium557/mono.m3u8
-
-#EXTINF:-1 tvg-id="nhlcarolinahurricanesvsfloridapanthers" tvg-name="NHL : Carolina Hurricanes vs Florida Panthers (02:00)" tvg-logo="https://raw.githubusercontent.com/realbestia/TV/main/logos/Carolina Hurricanes_vs_Florida Panthers.png" group-title="Eventi Live",NHL : Carolina Hurricanes vs Florida Panthers (02:00)
-https://dokko1new.newkso.ru/dokko1/premium556/mono.m3u8
 
