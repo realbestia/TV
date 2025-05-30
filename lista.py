@@ -268,19 +268,20 @@ def eventi_m3u8_generator_world():
     current_time = time.time() 
     three_hours_in_seconds = 3 * 60 * 60
 
-        # Funzione per pulire il nome della categoria
-    def clean_category_name(name): 
-        # Rimuove tag html come </span> o simili 
+    # Funzione per pulire il nome della categoria
+    def clean_category_name(name):
+        # Rimuove tag html come </span> o simili
         return re.sub(r'<[^>]+>', '', name).strip()
 
-    def clean_tvg_id(tvg_id):
+    def clean_tvg_id(text_input):
         """
-        Pulisce il tvg-id rimuovendo caratteri speciali, spazi e convertendo tutto in minuscolo
+        Pulisce il testo per tvg-id: minuscolo, senza spazi, senza caratteri speciali (solo a-z0-9).
         """
         import re
-        # Rimuove caratteri speciali comuni mantenendo solo lettere e numeri
-        cleaned = re.sub(r'[^a-zA-Z0-9Ã-Ã¿]', '', tvg_id)
-        return cleaned.lower()
+        cleaned = str(text_input).lower()
+        cleaned = re.sub(r'\s+', '', cleaned)
+        cleaned = re.sub(r'[^a-z0-9]', '', cleaned)
+        return cleaned
      
     def search_logo_for_event(event_name): 
         """ 
@@ -826,8 +827,11 @@ def eventi_m3u8_generator_world():
      
                 for ch in channels: 
                     tvg_name = ch["tvg_name"] 
-                    channel_id = ch["channel_id"] 
+                    # channel_id_original = ch["channel_id"] # ID numerico originale, usato per get_stream
                     event_title = ch["event_title"]  # Otteniamo il titolo dell'evento
+                    
+                    # Genera tvg-id basato sul nome dell'evento pulito
+                    event_based_tvg_id = clean_tvg_id(event_title)
                     
                     # Cerca un logo per questo evento
                     # Rimuovi l'orario dal titolo dell'evento prima di cercare il logo
@@ -837,9 +841,9 @@ def eventi_m3u8_generator_world():
                     logo_attribute = f' tvg-logo="{logo_url}"' if logo_url else ''
      
                     try: 
-                        stream = get_stream_from_channel_id(channel_id) 
+                        stream = get_stream_from_channel_id(ch["channel_id"]) # Usa l'ID numerico originale per lo stream
                         if stream: 
-                            f.write(f'#EXTINF:-1 tvg-id="{channel_id}" tvg-name="{tvg_name}"{logo_attribute} group-title="Eventi Live",{tvg_name}\n{stream}\n\n') 
+                            f.write(f'#EXTINF:-1 tvg-id="{event_based_tvg_id}" tvg-name="{tvg_name}"{logo_attribute} group-title="Eventi Live",{tvg_name}\n{stream}\n\n') 
                             print(f"[✓] {tvg_name}" + (f" (logo trovato)" if logo_url else " (nessun logo trovato)")) 
                         else: 
                             print(f"[✗] {tvg_name} - Nessuno stream trovato") 
@@ -891,14 +895,18 @@ def eventi_m3u8_generator_world():
         # Rimuove tag html come </span> o simili 
         return re.sub(r'<[^>]+>', '', name).strip()
         
-    def clean_tvg_id(tvg_id):
+    def clean_tvg_id(text_input):
         """
-        Pulisce il tvg-id rimuovendo caratteri speciali, spazi e convertendo tutto in minuscolo
+        Pulisce il testo per tvg-id: minuscolo, senza spazi, senza caratteri speciali (solo a-z0-9).
         """
         import re
-        # Rimuove caratteri speciali comuni mantenendo solo lettere e numeri
-        cleaned = re.sub(r'[^a-zA-Z0-9Ã-Ã¿]', '', tvg_id)
-        return cleaned.lower()
+        # Convert to lowercase
+        cleaned = str(text_input).lower()
+        # Remove spaces
+        cleaned = re.sub(r'\s+', '', cleaned)
+        # Remove special characters (keep only a-z, 0-9)
+        cleaned = re.sub(r'[^a-z0-9]', '', cleaned)
+        return cleaned
      
     def search_logo_for_event(event_name): 
         """ 
@@ -1431,8 +1439,11 @@ def eventi_m3u8_generator_world():
      
                 for ch in channels: 
                     tvg_name = ch["tvg_name"] 
-                    channel_id = ch["channel_id"] 
+                    # channel_id_original = ch["channel_id"] # ID numerico originale, usato per get_stream
                     event_title = ch["event_title"]  # Otteniamo il titolo dell'evento
+                    
+                    # Genera tvg-id basato sul nome dell'evento pulito
+                    event_based_tvg_id = clean_tvg_id(event_title)
                     
                     # Cerca un logo per questo evento
                     # Rimuovi l'orario dal titolo dell'evento prima di cercare il logo
@@ -1442,9 +1453,9 @@ def eventi_m3u8_generator_world():
                     logo_attribute = f' tvg-logo="{logo_url}"' if logo_url else ''
      
                     try: 
-                        stream = get_stream_from_channel_id(channel_id) 
+                        stream = get_stream_from_channel_id(ch["channel_id"]) # Usa l'ID numerico originale per lo stream
                         if stream: 
-                            f.write(f'#EXTINF:-1 tvg-id="{channel_id}" tvg-name="{tvg_name}"{logo_attribute} group-title="Eventi Live",{tvg_name}\n{stream}\n\n') 
+                            f.write(f'#EXTINF:-1 tvg-id="{event_based_tvg_id}" tvg-name="{tvg_name}"{logo_attribute} group-title="Eventi Live",{tvg_name}\n{stream}\n\n') 
                             print(f"[✓] {tvg_name}" + (f" (logo trovato)" if logo_url else " (nessun logo trovato)")) 
                         else: 
                             print(f"[✗] {tvg_name} - Nessuno stream trovato") 
@@ -1496,14 +1507,18 @@ def eventi_m3u8_generator():
         # Rimuove tag html come </span> o simili 
         return re.sub(r'<[^>]+>', '', name).strip()
         
-    def clean_tvg_id(tvg_id):
+    def clean_tvg_id(text_input):
         """
-        Pulisce il tvg-id rimuovendo caratteri speciali, spazi e convertendo tutto in minuscolo
+        Pulisce il testo per tvg-id: minuscolo, senza spazi, senza caratteri speciali (solo a-z0-9).
         """
         import re
-        # Rimuove caratteri speciali comuni mantenendo solo lettere e numeri
-        cleaned = re.sub(r'[^a-zA-Z0-9Ã-Ã¿]', '', tvg_id)
-        return cleaned.lower()
+        # Convert to lowercase
+        cleaned = str(text_input).lower()
+        # Remove spaces
+        cleaned = re.sub(r'\s+', '', cleaned)
+        # Remove special characters (keep only a-z, 0-9)
+        cleaned = re.sub(r'[^a-z0-9]', '', cleaned)
+        return cleaned
      
     def search_logo_for_event(event_name): 
         """ 
@@ -2036,8 +2051,11 @@ def eventi_m3u8_generator():
      
                 for ch in channels: 
                     tvg_name = ch["tvg_name"] 
-                    channel_id = ch["channel_id"] 
+                    # channel_id_original = ch["channel_id"] # ID numerico originale, usato per get_stream
                     event_title = ch["event_title"]  # Otteniamo il titolo dell'evento
+                    
+                    # Genera tvg-id basato sul nome dell'evento pulito
+                    event_based_tvg_id = clean_tvg_id(event_title)
                     
                     # Cerca un logo per questo evento
                     # Rimuovi l'orario dal titolo dell'evento prima di cercare il logo
@@ -2047,9 +2065,9 @@ def eventi_m3u8_generator():
                     logo_attribute = f' tvg-logo="{logo_url}"' if logo_url else ''
      
                     try: 
-                        stream = get_stream_from_channel_id(channel_id) 
+                        stream = get_stream_from_channel_id(ch["channel_id"]) # Usa l'ID numerico originale per lo stream
                         if stream: 
-                            f.write(f'#EXTINF:-1 tvg-id="{channel_id}" tvg-name="{tvg_name}"{logo_attribute} group-title="Eventi Live",{tvg_name}\n{stream}\n\n') 
+                            f.write(f'#EXTINF:-1 tvg-id="{event_based_tvg_id}" tvg-name="{tvg_name}"{logo_attribute} group-title="Eventi Live",{tvg_name}\n{stream}\n\n') 
                             print(f"[✓] {tvg_name}" + (f" (logo trovato)" if logo_url else " (nessun logo trovato)")) 
                         else: 
                             print(f"[✗] {tvg_name} - Nessuno stream trovato") 
