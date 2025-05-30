@@ -1,8 +1,2 @@
 #EXTM3U x-tvg-url="https://raw.githubusercontent.com/realbestia/TV/refs/heads/main/deevents.xml
 
-#EXTINF:-1 tvg-name="Soccer" group-title="Eventi Live",--- Soccer ---
-https://exemple.m3u8
-
-#EXTINF:-1 tvg-id="uefawomensnationsleaguegermanyvsnetherlands" tvg-name="UEFA Women's Nations League : Germany vs Netherlands (20:30)" tvg-logo="https://raw.githubusercontent.com/realbestia/TV/main/logos/Germany_vs_Netherlands.png" group-title="Eventi Live",UEFA Women's Nations League : Germany vs Netherlands (20:30)
-https://ddy6new.newkso.ru/ddy6/premium727/mono.m3u8
-

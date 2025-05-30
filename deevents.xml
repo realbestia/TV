@@ -1,3 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tv>
+  <channel id="AustraliaALeagueMelbourneCityvsMelbourneVictory">
+    <display-name>Australia - A-League : Melbourne City vs Melbourne Victory</display-name>
+  </channel>
+  <programme start="20250531000000 +0200" stop="20250531114000 +0200" channel="AustraliaALeagueMelbourneCityvsMelbourneVictory">
+    <title lang="it">Fängt um 11:40 an.</title>
+    <desc lang="it">Australia - A-League : Melbourne City vs Melbourne Victory.</desc>
+    <category lang="it">Bekanntmachung</category>
+  </programme>
+  <programme start="20250531114000 +0200" stop="20250531134000 +0200" channel="AustraliaALeagueMelbourneCityvsMelbourneVictory">
+    <title lang="it">Live Streaming.</title>
+    <desc lang="it">Australia - A-League : Melbourne City vs Melbourne Victory</desc>
+    <category lang="it">Soccer</category>
+  </programme>
+  <channel id="AustraliaSupercarsChampionship2025PerthSuper440Race1">
+    <display-name>Australia Supercars Championship 2025: Perth Super 440 (Race 1)</display-name>
+  </channel>
+  <programme start="20250531000000 +0200" stop="20250531080000 +0200" channel="AustraliaSupercarsChampionship2025PerthSuper440Race1">
+    <title lang="it">Fängt um 08:00 an.</title>
+    <desc lang="it">Australia Supercars Championship 2025: Perth Super 440 (Race 1).</desc>
+    <category lang="it">Bekanntmachung</category>
+  </programme>
+  <programme start="20250531080000 +0200" stop="20250531100000 +0200" channel="AustraliaSupercarsChampionship2025PerthSuper440Race1">
+    <title lang="it">Live Streaming.</title>
+    <desc lang="it">Australia Supercars Championship 2025: Perth Super 440 (Race 1)</desc>
+    <category lang="it">Motorsport</category>
+  </programme>
+  <channel id="AustraliaSupercarsChampionship2025PerthSuper440Race2">
+    <display-name>Australia Supercars Championship 2025: Perth Super 440 (Race 2)</display-name>
+  </channel>
+  <programme start="20250531000000 +0200" stop="20250531101000 +0200" channel="AustraliaSupercarsChampionship2025PerthSuper440Race2">
+    <title lang="it">Fängt um 10:10 an.</title>
+    <desc lang="it">Australia Supercars Championship 2025: Perth Super 440 (Race 2).</desc>
+    <category lang="it">Bekanntmachung</category>
+  </programme>
+  <programme start="20250531101000 +0200" stop="20250531121000 +0200" channel="AustraliaSupercarsChampionship2025PerthSuper440Race2">
+    <title lang="it">Live Streaming.</title>
+    <desc lang="it">Australia Supercars Championship 2025: Perth Super 440 (Race 2)</desc>
+    <category lang="it">Motorsport</category>
+  </programme>
+  <channel id="HandballBundesligaTHWKielvsHSVHamburg">
+    <display-name>Handball-Bundesliga : THW Kiel vs. HSV Hamburg</display-name>
+  </channel>
+  <programme start="20250531000000 +0200" stop="20250531190000 +0200" channel="HandballBundesligaTHWKielvsHSVHamburg">
+    <title lang="it">Fängt um 19:00 an.</title>
+    <desc lang="it">Handball-Bundesliga : THW Kiel vs. HSV Hamburg.</desc>
+    <category lang="it">Bekanntmachung</category>
+  </programme>
+  <programme start="20250531190000 +0200" stop="20250531210000 +0200" channel="HandballBundesligaTHWKielvsHSVHamburg">
+    <title lang="it">Live Streaming.</title>
+    <desc lang="it">Handball-Bundesliga : THW Kiel vs. HSV Hamburg</desc>
+    <category lang="it">Handball</category>
+  </programme>
+  <channel id="NationalRugbyLeagueNQCowboysvsWestsTigers">
+    <display-name>National Rugby League : NQ Cowboys vs Wests Tigers</display-name>
+  </channel>
+  <programme start="20250531000000 +0200" stop="20250531093000 +0200" channel="NationalRugbyLeagueNQCowboysvsWestsTigers">
+    <title lang="it">Fängt um 09:30 an.</title>
+    <desc lang="it">National Rugby League : NQ Cowboys vs Wests Tigers.</desc>
+    <category lang="it">Bekanntmachung</category>
+  </programme>
+  <programme start="20250531093000 +0200" stop="20250531113000 +0200" channel="NationalRugbyLeagueNQCowboysvsWestsTigers">
+    <title lang="it">Live Streaming.</title>
+    <desc lang="it">National Rugby League : NQ Cowboys vs Wests Tigers</desc>
+    <category lang="it">Rugby League</category>
+  </programme>
+  <channel id="NationalRugbyLeagueManlySeaEaglesvsBrisbaneBroncos">
+    <display-name>National Rugby League : Manly Sea Eagles vs Brisbane Broncos</display-name>
+  </channel>
+  <programme start="20250531000000 +0200" stop="20250531113500 +0200" channel="NationalRugbyLeagueManlySeaEaglesvsBrisbaneBroncos">
+    <title lang="it">Fängt um 11:35 an.</title>
+    <desc lang="it">National Rugby League : Manly Sea Eagles vs Brisbane Broncos.</desc>
+    <category lang="it">Bekanntmachung</category>
+  </programme>
+  <programme start="20250531113500 +0200" stop="20250531133500 +0200" channel="NationalRugbyLeagueManlySeaEaglesvsBrisbaneBroncos">
+    <title lang="it">Live Streaming.</title>
+    <desc lang="it">National Rugby League : Manly Sea Eagles vs Brisbane Broncos</desc>
+    <category lang="it">Rugby League</category>
+  </programme>
+  <channel id="SuperLeagueRugbyLeedsRhinosvsWakefieldTrinity">
+    <display-name>Super League Rugby : Leeds Rhinos vs Wakefield Trinity</display-name>
+  </channel>
+  <programme start="20250531000000 +0200" stop="20250531153000 +0200" channel="SuperLeagueRugbyLeedsRhinosvsWakefieldTrinity">
+    <title lang="it">Fängt um 15:30 an.</title>
+    <desc lang="it">Super League Rugby : Leeds Rhinos vs Wakefield Trinity.</desc>
+    <category lang="it">Bekanntmachung</category>
+  </programme>
+  <programme start="20250531153000 +0200" stop="20250531173000 +0200" channel="SuperLeagueRugbyLeedsRhinosvsWakefieldTrinity">
+    <title lang="it">Live Streaming.</title>
+    <desc lang="it">Super League Rugby : Leeds Rhinos vs Wakefield Trinity</desc>
+    <category lang="it">Rugby League</category>
+  </programme>
 </tv>
