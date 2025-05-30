@@ -1,0 +1,62 @@
+#EXTM3U x-tvg-url="https://raw.githubusercontent.com/realbestia/TV/refs/heads/main/deevents.xml
+
+#EXTINF:-1 tvg-name="Soccer" group-title="Eventi Live",--- Soccer ---
+https://exemple.m3u8
+
+#EXTINF:-1 tvg-id="426" tvg-name="Saudi Arabia - King Cup : Al Ittihad vs Al Quadisiya (20:00)" tvg-logo="https://raw.githubusercontent.com/realbestia/TV/main/logos/Al Ittihad_vs_Al Quadisiya.png" group-title="Eventi Live",Saudi Arabia - King Cup : Al Ittihad vs Al Quadisiya (20:00)
+https://ddy6new.newkso.ru/ddy6/premium426/mono.m3u8
+
+#EXTINF:-1 tvg-id="727" tvg-name="UEFA Women's Nations League : Germany vs Netherlands (20:30)" tvg-logo="https://raw.githubusercontent.com/realbestia/TV/main/logos/Germany_vs_Netherlands.png" group-title="Eventi Live",UEFA Women's Nations League : Germany vs Netherlands (20:30)
+https://ddy6new.newkso.ru/ddy6/premium727/mono.m3u8
+
+#EXTINF:-1 tvg-name="Motorsport" group-title="Eventi Live",--- Motorsport ---
+https://exemple.m3u8
+
+#EXTINF:-1 tvg-id="274" tvg-name="Formula 3 : Aramco Spanish Grand Prix Practice (10:00)" tvg-logo="https://images.seeklogo.com/logo-png/5/2/formula-3-euro-series-logo-png_seeklogo-56757.png" group-title="Eventi Live",Formula 3 : Aramco Spanish Grand Prix Practice (10:00)
+https://windnew.newkso.ru/wind/premium274/mono.m3u8
+
+#EXTINF:-1 tvg-id="274" tvg-name="Formula 2 : Aramco Spanish Grand Prix Free Practice (11:00)" tvg-logo="https://www.thesportsdb.com/images/media/league/badge/3iwfjg1536242234.png" group-title="Eventi Live",Formula 2 : Aramco Spanish Grand Prix Free Practice (11:00)
+https://windnew.newkso.ru/wind/premium274/mono.m3u8
+
+#EXTINF:-1 tvg-id="274" tvg-name="Formula 1 : Aramco Spanish Grand Prix - Practice 1 (13:30)" tvg-logo="https://logospng.org/download/formula-1/formula-1-4096.png" group-title="Eventi Live",Formula 1 : Aramco Spanish Grand Prix - Practice 1 (13:30)
+https://windnew.newkso.ru/wind/premium274/mono.m3u8
+
+#EXTINF:-1 tvg-id="274" tvg-name="Formula 3 : Aramco Spanish Grand Prix Qualifying (15:00)" tvg-logo="https://images.seeklogo.com/logo-png/5/2/formula-3-euro-series-logo-png_seeklogo-56757.png" group-title="Eventi Live",Formula 3 : Aramco Spanish Grand Prix Qualifying (15:00)
+https://windnew.newkso.ru/wind/premium274/mono.m3u8
+
+#EXTINF:-1 tvg-id="274" tvg-name="Formula 2 : Aramco Spanish Grand Prix Qualifying (15:45)" tvg-logo="https://www.thesportsdb.com/images/media/league/badge/3iwfjg1536242234.png" group-title="Eventi Live",Formula 2 : Aramco Spanish Grand Prix Qualifying (15:45)
+https://windnew.newkso.ru/wind/premium274/mono.m3u8
+
+#EXTINF:-1 tvg-id="274" tvg-name="Formula 1 : Aramco Spanish Grand Prix - Practice 2 (17:00)" tvg-logo="https://logospng.org/download/formula-1/formula-1-4096.png" group-title="Eventi Live",Formula 1 : Aramco Spanish Grand Prix - Practice 2 (17:00)
+https://windnew.newkso.ru/wind/premium274/mono.m3u8
+
+#EXTINF:-1 tvg-name="Aussie rules" group-title="Eventi Live",--- Aussie rules ---
+https://exemple.m3u8
+
+#EXTINF:-1 tvg-id="640" tvg-name="AFL : Collingwood Magpies vs Hawthorn Hawks (11:40)" tvg-logo="https://raw.githubusercontent.com/realbestia/TV/main/logos/Collingwood Magpies_vs_Hawthorn Hawks.png" group-title="Eventi Live",AFL : Collingwood Magpies vs Hawthorn Hawks (11:40)
+https://dokko1new.newkso.ru/dokko1/premium640/mono.m3u8
+
+#EXTINF:-1 tvg-name="Darts" group-title="Eventi Live",--- Darts ---
+https://exemple.m3u8
+
+#EXTINF:-1 tvg-id="427" tvg-name="PDC Dart, round 1 | European Tour 2025 (13:00)" tvg-logo="https://mcdart.de/media/fill/540x540x100/4d/c4/3e/1667565595/4441_Winmau_PDC_Dartboard_Surround_1.png" group-title="Eventi Live",PDC Dart, round 1 | European Tour 2025 (13:00)
+https://ddy6new.newkso.ru/ddy6/premium427/mono.m3u8
+
+#EXTINF:-1 tvg-id="641" tvg-name="PDC Dart, round 1 | European Tour 2025 (13:00)" tvg-logo="https://mcdart.de/media/fill/540x540x100/4d/c4/3e/1667565595/4441_Winmau_PDC_Dartboard_Surround_1.png" group-title="Eventi Live",PDC Dart, round 1 | European Tour 2025 (13:00)
+https://ddy6new.newkso.ru/ddy6/premium641/mono.m3u8
+
+#EXTINF:-1 tvg-id="427" tvg-name="PDC Dart, round 1 | European Tour 2025 (19:00)" tvg-logo="https://mcdart.de/media/fill/540x540x100/4d/c4/3e/1667565595/4441_Winmau_PDC_Dartboard_Surround_1.png" group-title="Eventi Live",PDC Dart, round 1 | European Tour 2025 (19:00)
+https://ddy6new.newkso.ru/ddy6/premium427/mono.m3u8
+
+#EXTINF:-1 tvg-id="641" tvg-name="PDC Dart, round 1 | European Tour 2025 (19:00)" tvg-logo="https://mcdart.de/media/fill/540x540x100/4d/c4/3e/1667565595/4441_Winmau_PDC_Dartboard_Surround_1.png" group-title="Eventi Live",PDC Dart, round 1 | European Tour 2025 (19:00)
+https://ddy6new.newkso.ru/ddy6/premium641/mono.m3u8
+
+#EXTINF:-1 tvg-name="Ice Hockey" group-title="Eventi Live",--- Ice Hockey ---
+https://exemple.m3u8
+
+#EXTINF:-1 tvg-id="557" tvg-name="NHL : Carolina Hurricanes vs Florida Panthers (02:00)" tvg-logo="https://raw.githubusercontent.com/realbestia/TV/main/logos/Carolina Hurricanes_vs_Florida Panthers.png" group-title="Eventi Live",NHL : Carolina Hurricanes vs Florida Panthers (02:00)
+https://ddy6new.newkso.ru/ddy6/premium557/mono.m3u8
+
+#EXTINF:-1 tvg-id="556" tvg-name="NHL : Carolina Hurricanes vs Florida Panthers (02:00)" tvg-logo="https://raw.githubusercontent.com/realbestia/TV/main/logos/Carolina Hurricanes_vs_Florida Panthers.png" group-title="Eventi Live",NHL : Carolina Hurricanes vs Florida Panthers (02:00)
+https://dokko1new.newkso.ru/dokko1/premium556/mono.m3u8
+
