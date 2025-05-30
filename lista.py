@@ -264,6 +264,9 @@ def eventi_m3u8_generator_world():
 
     HTTP_TIMEOUT = 10  # seconds for requests
     session = requests.Session()
+    # Definisci current_time e three_hours_in_seconds per la logica di caching
+    current_time = time.time() 
+    three_hours_in_seconds = 3 * 60 * 60
 
         # Funzione per pulire il nome della categoria
     def clean_category_name(name): 
@@ -345,11 +348,49 @@ def eventi_m3u8_generator_world():
                                     return output_filename
                         
                         # Scarica i loghi
-                        response1 = requests.get(logo1_url, timeout=10)
-                        img1 = Image.open(io.BytesIO(response1.content))
+                        img1, img2 = None, None
                         
-                        response2 = requests.get(logo2_url, timeout=10)
-                        img2 = Image.open(io.BytesIO(response2.content))
+                        if logo1_url:
+                            try:
+                                # Aggiungi un User-Agent simile a un browser
+                                logo_headers = {
+                                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+                                }
+                                response1 = requests.get(logo1_url, headers=logo_headers, timeout=10)
+                                response1.raise_for_status() # Controlla errori HTTP
+                                if 'image' in response1.headers.get('Content-Type', '').lower():
+                                    img1 = Image.open(io.BytesIO(response1.content))
+                                    print(f"[✓] Logo1 scaricato con successo da: {logo1_url}")
+                                else:
+                                    print(f"[!] URL logo1 ({logo1_url}) non è un'immagine (Content-Type: {response1.headers.get('Content-Type')}).")
+                                    logo1_url = None # Invalida URL se non è un'immagine
+                            except requests.exceptions.RequestException as e_req:
+                                print(f"[!] Errore scaricando logo1 ({logo1_url}): {e_req}")
+                                logo1_url = None
+                            except Exception as e_pil: # Errore specifico da PIL durante Image.open
+                                print(f"[!] Errore PIL aprendo logo1 ({logo1_url}): {e_pil}")
+                                logo1_url = None
+                        
+                        if logo2_url:
+                            try:
+                                # Aggiungi un User-Agent simile a un browser
+                                logo_headers = {
+                                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+                                }
+                                response2 = requests.get(logo2_url, headers=logo_headers, timeout=10)
+                                response2.raise_for_status() # Controlla errori HTTP
+                                if 'image' in response2.headers.get('Content-Type', '').lower():
+                                    img2 = Image.open(io.BytesIO(response2.content))
+                                    print(f"[✓] Logo2 scaricato con successo da: {logo2_url}")
+                                else:
+                                    print(f"[!] URL logo2 ({logo2_url}) non è un'immagine (Content-Type: {response2.headers.get('Content-Type')}).")
+                                    logo2_url = None # Invalida URL se non è un'immagine
+                            except requests.exceptions.RequestException as e_req:
+                                print(f"[!] Errore scaricando logo2 ({logo2_url}): {e_req}")
+                                logo2_url = None
+                            except Exception as e_pil: # Errore specifico da PIL durante Image.open
+                                print(f"[!] Errore PIL aprendo logo2 ({logo2_url}): {e_pil}")
+                                logo2_url = None
                         
                         # Carica l'immagine VS (assicurati che esista nella directory corrente)
                         vs_path = "vs.png"
@@ -368,6 +409,11 @@ def eventi_m3u8_generator_world():
                             except:
                                 font = ImageFont.load_default()
                             draw.text((30, 30), "VS", fill=(255, 0, 0), font=font)
+
+                        # Procedi con la combinazione solo se entrambi i loghi sono stati caricati con successo
+                        if not (img1 and img2):
+                            print(f"[!] Impossibile caricare entrambi i loghi come immagini valide per la combinazione. Logo1 caricato: {bool(img1)}, Logo2 caricato: {bool(img2)}.")
+                            raise ValueError("Uno o entrambi i loghi non sono stati caricati correttamente.") # Questo forzerà l'except sottostante
                         
                         # Ridimensiona le immagini a dimensioni uniformi
                         size = (150, 150)
@@ -424,7 +470,7 @@ def eventi_m3u8_generator_world():
                     except Exception as e:
                         print(f"[!] Errore nella creazione dell'immagine combinata: {e}")
                         # Se fallisce, restituisci solo il primo logo trovato
-                        return logo1_url
+                        return logo1_url or logo2_url
                 
                 # Se non abbiamo trovato entrambi i loghi, restituisci quello che abbiamo
                 return logo1_url or logo2_url
@@ -671,7 +717,7 @@ def eventi_m3u8_generator_world():
             
             if PROXY:
                 encoded_raw_m3u8_url = urllib.parse.quote(raw_m3u8_url)
-                proxied_stream_url = f"{PROXY.rstrip('/')}/proxy/m3u?url={encoded_raw_m3u8_url}"
+                proxied_stream_url = f"{PROXY.rstrip('/')}{encoded_raw_m3u8_url}"
                 return proxied_stream_url
             else:
                 print(f"[!] PROXYIP environment variable not set for event stream. Returning raw URL for channel {channel_key}.")
@@ -837,6 +883,9 @@ def eventi_m3u8_generator_world():
     HTTP_TIMEOUT = 10 
     session = requests.Session() 
     session.headers.update(HEADERS) 
+    # Definisci current_time e three_hours_in_seconds per la logica di caching
+    current_time = time.time()
+    three_hours_in_seconds = 3 * 60 * 60
     
     def clean_category_name(name): 
         # Rimuove tag html come </span> o simili 
@@ -917,11 +966,49 @@ def eventi_m3u8_generator_world():
                                     return output_filename
                         
                         # Scarica i loghi
-                        response1 = requests.get(logo1_url, timeout=10)
-                        img1 = Image.open(io.BytesIO(response1.content))
+                        img1, img2 = None, None
                         
-                        response2 = requests.get(logo2_url, timeout=10)
-                        img2 = Image.open(io.BytesIO(response2.content))
+                        if logo1_url:
+                            try:
+                                # Aggiungi un User-Agent simile a un browser
+                                logo_headers = {
+                                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+                                }
+                                response1 = requests.get(logo1_url, headers=logo_headers, timeout=10)
+                                response1.raise_for_status() # Controlla errori HTTP
+                                if 'image' in response1.headers.get('Content-Type', '').lower():
+                                    img1 = Image.open(io.BytesIO(response1.content))
+                                    print(f"[✓] Logo1 scaricato con successo da: {logo1_url}")
+                                else:
+                                    print(f"[!] URL logo1 ({logo1_url}) non è un'immagine (Content-Type: {response1.headers.get('Content-Type')}).")
+                                    logo1_url = None # Invalida URL se non è un'immagine
+                            except requests.exceptions.RequestException as e_req:
+                                print(f"[!] Errore scaricando logo1 ({logo1_url}): {e_req}")
+                                logo1_url = None
+                            except Exception as e_pil: # Errore specifico da PIL durante Image.open
+                                print(f"[!] Errore PIL aprendo logo1 ({logo1_url}): {e_pil}")
+                                logo1_url = None
+                        
+                        if logo2_url:
+                            try:
+                                # Aggiungi un User-Agent simile a un browser
+                                logo_headers = {
+                                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+                                }
+                                response2 = requests.get(logo2_url, headers=logo_headers, timeout=10)
+                                response2.raise_for_status() # Controlla errori HTTP
+                                if 'image' in response2.headers.get('Content-Type', '').lower():
+                                    img2 = Image.open(io.BytesIO(response2.content))
+                                    print(f"[✓] Logo2 scaricato con successo da: {logo2_url}")
+                                else:
+                                    print(f"[!] URL logo2 ({logo2_url}) non è un'immagine (Content-Type: {response2.headers.get('Content-Type')}).")
+                                    logo2_url = None # Invalida URL se non è un'immagine
+                            except requests.exceptions.RequestException as e_req:
+                                print(f"[!] Errore scaricando logo2 ({logo2_url}): {e_req}")
+                                logo2_url = None
+                            except Exception as e_pil: # Errore specifico da PIL durante Image.open
+                                print(f"[!] Errore PIL aprendo logo2 ({logo2_url}): {e_pil}")
+                                logo2_url = None
                         
                         # Carica l'immagine VS (assicurati che esista nella directory corrente)
                         vs_path = "vs.png"
@@ -940,6 +1027,11 @@ def eventi_m3u8_generator_world():
                             except:
                                 font = ImageFont.load_default()
                             draw.text((30, 30), "VS", fill=(255, 0, 0), font=font)
+                        
+                        # Procedi con la combinazione solo se entrambi i loghi sono stati caricati con successo
+                        if not (img1 and img2):
+                            print(f"[!] Impossibile caricare entrambi i loghi come immagini valide per la combinazione. Logo1 caricato: {bool(img1)}, Logo2 caricato: {bool(img2)}.")
+                            raise ValueError("Uno o entrambi i loghi non sono stati caricati correttamente.") # Questo forzerà l'except sottostante
                         
                         # Ridimensiona le immagini a dimensioni uniformi
                         size = (150, 150)
@@ -996,7 +1088,7 @@ def eventi_m3u8_generator_world():
                     except Exception as e:
                         print(f"[!] Errore nella creazione dell'immagine combinata: {e}")
                         # Se fallisce, restituisci solo il primo logo trovato
-                        return logo1_url
+                        return logo1_url or logo2_url
                 
                 # Se non abbiamo trovato entrambi i loghi, restituisci quello che abbiamo
                 return logo1_url or logo2_url
@@ -1396,6 +1488,9 @@ def eventi_m3u8_generator():
     HTTP_TIMEOUT = 10 
     session = requests.Session() 
     session.headers.update(HEADERS) 
+    # Definisci current_time e three_hours_in_seconds per la logica di caching
+    current_time = time.time()
+    three_hours_in_seconds = 3 * 60 * 60
     
     def clean_category_name(name): 
         # Rimuove tag html come </span> o simili 
@@ -1476,11 +1571,49 @@ def eventi_m3u8_generator():
                                     return output_filename
                         
                         # Scarica i loghi
-                        response1 = requests.get(logo1_url, timeout=10)
-                        img1 = Image.open(io.BytesIO(response1.content))
+                        img1, img2 = None, None
                         
-                        response2 = requests.get(logo2_url, timeout=10)
-                        img2 = Image.open(io.BytesIO(response2.content))
+                        if logo1_url:
+                            try:
+                                # Aggiungi un User-Agent simile a un browser
+                                logo_headers = {
+                                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+                                }
+                                response1 = requests.get(logo1_url, headers=logo_headers, timeout=10)
+                                response1.raise_for_status() # Controlla errori HTTP
+                                if 'image' in response1.headers.get('Content-Type', '').lower():
+                                    img1 = Image.open(io.BytesIO(response1.content))
+                                    print(f"[✓] Logo1 scaricato con successo da: {logo1_url}")
+                                else:
+                                    print(f"[!] URL logo1 ({logo1_url}) non è un'immagine (Content-Type: {response1.headers.get('Content-Type')}).")
+                                    logo1_url = None # Invalida URL se non è un'immagine
+                            except requests.exceptions.RequestException as e_req:
+                                print(f"[!] Errore scaricando logo1 ({logo1_url}): {e_req}")
+                                logo1_url = None
+                            except Exception as e_pil: # Errore specifico da PIL durante Image.open
+                                print(f"[!] Errore PIL aprendo logo1 ({logo1_url}): {e_pil}")
+                                logo1_url = None
+                        
+                        if logo2_url:
+                            try:
+                                # Aggiungi un User-Agent simile a un browser
+                                logo_headers = {
+                                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+                                }
+                                response2 = requests.get(logo2_url, headers=logo_headers, timeout=10)
+                                response2.raise_for_status() # Controlla errori HTTP
+                                if 'image' in response2.headers.get('Content-Type', '').lower():
+                                    img2 = Image.open(io.BytesIO(response2.content))
+                                    print(f"[✓] Logo2 scaricato con successo da: {logo2_url}")
+                                else:
+                                    print(f"[!] URL logo2 ({logo2_url}) non è un'immagine (Content-Type: {response2.headers.get('Content-Type')}).")
+                                    logo2_url = None # Invalida URL se non è un'immagine
+                            except requests.exceptions.RequestException as e_req:
+                                print(f"[!] Errore scaricando logo2 ({logo2_url}): {e_req}")
+                                logo2_url = None
+                            except Exception as e_pil: # Errore specifico da PIL durante Image.open
+                                print(f"[!] Errore PIL aprendo logo2 ({logo2_url}): {e_pil}")
+                                logo2_url = None
                         
                         # Carica l'immagine VS (assicurati che esista nella directory corrente)
                         vs_path = "vs.png"
@@ -1499,6 +1632,11 @@ def eventi_m3u8_generator():
                             except:
                                 font = ImageFont.load_default()
                             draw.text((30, 30), "VS", fill=(255, 0, 0), font=font)
+                        
+                        # Procedi con la combinazione solo se entrambi i loghi sono stati caricati con successo
+                        if not (img1 and img2):
+                            print(f"[!] Impossibile caricare entrambi i loghi come immagini valide per la combinazione. Logo1 caricato: {bool(img1)}, Logo2 caricato: {bool(img2)}.")
+                            raise ValueError("Uno o entrambi i loghi non sono stati caricati correttamente.") # Questo forzerà l'except sottostante
                         
                         # Ridimensiona le immagini a dimensioni uniformi
                         size = (150, 150)
@@ -1555,7 +1693,7 @@ def eventi_m3u8_generator():
                     except Exception as e:
                         print(f"[!] Errore nella creazione dell'immagine combinata: {e}")
                         # Se fallisce, restituisci solo il primo logo trovato
-                        return logo1_url
+                        return logo1_url or logo2_url
                 
                 # Se non abbiamo trovato entrambi i loghi, restituisci quello che abbiamo
                 return logo1_url or logo2_url
@@ -2623,15 +2761,18 @@ def epg_eventi_generator():
         # Esegui la generazione EPG
         main_epg_generator(input_json_path, output_xml_path)
         
-# Funzione per il sesto script (vavoo_italy_channels.py)
-def vavoo_italy_channels():
-    print("Eseguendo il vavoo_italy_channels.py...")
+# Funzione per il sesto script (italy_channels.py)
+def italy_channels():
+    print("Eseguendo il italy_channels.py...")
 
     import requests
     import re
     import os
     import xml.etree.ElementTree as ET
     from dotenv import load_dotenv
+    import urllib.parse # Aggiunto per urlencode e quote
+    import json         # Aggiunto per json.JSONDecodeError
+    from bs4 import BeautifulSoup # Aggiunto per il parsing HTML
 
     # Carica le variabili d'ambiente dal file .env
     load_dotenv()
@@ -2642,6 +2783,10 @@ def vavoo_italy_channels():
     LOGOS_FILE = "logos.txt"
     OUTPUT_FILE = "channels_italy.m3u8"
     DEFAULT_TVG_ICON = ""
+    HTTP_TIMEOUT = 20  # Timeout per le richieste HTTP in secondi
+
+    # Crea una sessione requests per riutilizzare connessioni e gestire cookies
+    session = requests.Session()
 
     BASE_URLS = [
         "https://vavoo.to"
@@ -2698,7 +2843,7 @@ def vavoo_italy_channels():
 
     def fetch_channels(base_url):
         try:
-            response = requests.get(f"{base_url}/channels", timeout=10)
+            response = session.get(f"{base_url}/channels", timeout=HTTP_TIMEOUT)
             response.raise_for_status()
             return response.json()
         except requests.RequestException as e:
@@ -2741,7 +2886,6 @@ def vavoo_italy_channels():
 
     def get_manual_channels():
         return [
-            {"name": "SKY UNO (D)", "url": f"https://windnew.newkso.ru/wind/premium881/mono.m3u8", "tvg_id": "sky.uno.it", "logo": "https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/italy/sky-uno-it.png", "category": "Altro"},
             {"name": "SKY SPORT 251 (SS)", "url": f"https%3A//hls.kangal.icu/hls/sky251/index.m3u8&h_user-agent=Mozilla/5.0%20%28Windows%20NT%2010.0%3B%20Win64%3B%20x64%29%20AppleWebKit/537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome/133.0.0.0%20Safari/537.36&h_referer=https%3A//skystreaming.stream/&h_origin=https%3A//skystreaming.stream", "tvg_id": "sky.sport..251.it", "logo": "https://raw.githubusercontent.com/tv-logo/tv-logos/refs/heads/main/countries/italy/hd/sky-sport-hd-it.png", "category": "Sport"},
             {"name": "SKY SPORT 252 (SS)", "url": f"https%3A//hls.kangal.icu/hls/sky252/index.m3u8&h_user-agent=Mozilla/5.0%20%28Windows%20NT%2010.0%3B%20Win64%3B%20x64%29%20AppleWebKit/537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome/133.0.0.0%20Safari/537.36&h_referer=https%3A//skystreaming.stream/&h_origin=https%3A//skystreaming.stream", "tvg_id": "sky.sport..252.it", "logo": "https://raw.githubusercontent.com/tv-logo/tv-logos/refs/heads/main/countries/italy/hd/sky-sport-hd-it.png", "category": "Sport"},
             {"name": "SKY SPORT 253 (SS)", "url": f"https%3A//hls.kangal.icu/hls/sky253/index.m3u8&h_user-agent=Mozilla/5.0%20%28Windows%20NT%2010.0%3B%20Win64%3B%20x64%29%20AppleWebKit/537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome/133.0.0.0%20Safari/537.36&h_referer=https%3A//skystreaming.stream/&h_origin=https%3A//skystreaming.stream", "tvg_id": "sky.sport..253.it", "logo": "https://raw.githubusercontent.com/tv-logo/tv-logos/refs/heads/main/countries/italy/hd/sky-sport-hd-it.png", "category": "Sport"},
@@ -2753,8 +2897,162 @@ def vavoo_italy_channels():
             {"name": "SKY SPORT 259 (SS)", "url": f"https%3A//hls.kangal.icu/hls/sky259/index.m3u8&h_user-agent=Mozilla/5.0%20%28Windows%20NT%2010.0%3B%20Win64%3B%20x64%29%20AppleWebKit/537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome/133.0.0.0%20Safari/537.36&h_referer=https%3A//skystreaming.stream/&h_origin=https%3A//skystreaming.stream", "tvg_id": "sky.sport..259.it", "logo": "https://raw.githubusercontent.com/tv-logo/tv-logos/refs/heads/main/countries/italy/hd/sky-sport-hd-it.png", "category": "Sport"},
             {"name": "SKY SPORT 260 (SS)", "url": f"https%3A//hls.kangal.icu/hls/sky260/index.m3u8&h_user-agent=Mozilla/5.0%20%28Windows%20NT%2010.0%3B%20Win64%3B%20x64%29%20AppleWebKit/537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome/133.0.0.0%20Safari/537.36&h_referer=https%3A//skystreaming.stream/&h_origin=https%3A//skystreaming.stream", "tvg_id": "sky.sport..260.it", "logo": "https://raw.githubusercontent.com/tv-logo/tv-logos/refs/heads/main/countries/italy/hd/sky-sport-hd-it.png", "category": "Sport"},
             {"name": "SKY SPORT 261 (SS)", "url": f"https%3A//hls.kangal.icu/hls/sky261/index.m3u8&h_user-agent=Mozilla/5.0%20%28Windows%20NT%2010.0%3B%20Win64%3B%20x64%29%20AppleWebKit/537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome/133.0.0.0%20Safari/537.36&h_referer=https%3A//skystreaming.stream/&h_origin=https%3A//skystreaming.stream", "tvg_id": "sky.sport..261.it", "logo": "https://raw.githubusercontent.com/tv-logo/tv-logos/refs/heads/main/countries/italy/hd/sky-sport-hd-it.png", "category": "Sport"},
-            {"name": "DAZN 1 (D)", "url": f"https://nfsnew.newkso.ru/nfs/premium877/mono.m3u8", "tvg_id": "dazn.1.it.it", "logo": "https://upload.wikimedia.org/wikipedia/commons/d/d6/Dazn-logo.png", "category": "Sport"}
         ]
+
+    # --- Funzioni per risolvere gli stream Daddylive ---
+    def get_iframe_url(url):
+        try:
+            # Usiamo POST come nello script originale, anche se GET potrebbe essere sufficiente per ottenere l'iframe
+            resp = session.post(url, timeout=HTTP_TIMEOUT)
+            resp.raise_for_status()
+            match = re.search(r'iframe src="([^"]+)"', resp.text)
+            return match.group(1) if match else None
+        except requests.RequestException as e:
+            print(f"[!] Errore richiesta iframe URL {url}: {e}")
+            return None
+
+    def get_final_m3u8(iframe_url):
+        try:
+            parsed_iframe_url = urllib.parse.urlparse(iframe_url)
+            if not parsed_iframe_url.scheme or not parsed_iframe_url.netloc:
+                print(f"[!] URL iframe non valido: {iframe_url}")
+                return None
+            referer_base = f"{parsed_iframe_url.scheme}://{parsed_iframe_url.netloc}"
+
+            page_resp = session.post(iframe_url, timeout=HTTP_TIMEOUT) # Usiamo POST come nello script originale
+            page_resp.raise_for_status()
+            page = page_resp.text
+
+            key_match = re.search(r'var channelKey = "(.*?)"', page)
+            ts_match  = re.search(r'var authTs     = "(.*?)"', page)
+            rnd_match = re.search(r'var authRnd    = "(.*?)"', page)
+            sig_match = re.search(r'var authSig    = "(.*?)"', page)
+
+            if not all([key_match, ts_match, rnd_match, sig_match]):
+                print(f"[!] Mancano variabili auth in pagina {iframe_url}")
+                return None
+
+            channel_key = key_match.group(1)
+            auth_ts     = ts_match.group(1)
+            auth_rnd    = rnd_match.group(1)
+            auth_sig    = urllib.parse.quote(sig_match.group(1), safe='')
+
+            auth_url = f"https://top2new.newkso.ru/auth.php?channel_id={channel_key}&ts={auth_ts}&rnd={auth_rnd}&sig={auth_sig}"
+            session.get(auth_url, headers={"Referer": referer_base}, timeout=HTTP_TIMEOUT) # Auth call
+
+            lookup_url = f"{referer_base}/server_lookup.php?channel_id={urllib.parse.quote(channel_key)}"
+            lookup_resp = session.get(lookup_url, headers={"Referer": referer_base}, timeout=HTTP_TIMEOUT)
+            lookup_resp.raise_for_status()
+            data = lookup_resp.json()
+
+            server_key = data.get("server_key")
+            if not server_key:
+                print(f"[!] server_key non trovato per channel {channel_key} da {iframe_url}")
+                return None
+
+            if server_key == "top1/cdn":
+                raw_m3u8_url = f"https://top1.newkso.ru/top1/cdn/{channel_key}/mono.m3u8"
+            else:
+                raw_m3u8_url = f"https://{server_key}new.newkso.ru/{server_key}/{channel_key}/mono.m3u8"
+
+            # Restituisce sempre l'URL grezzo. Il proxy verrà applicato in save_m3u8 se necessario.
+            return raw_m3u8_url
+
+        except requests.RequestException as e:
+            print(f"[!] Errore richiesta in get_final_m3u8 per {iframe_url}: {e}")
+            return None
+        except json.JSONDecodeError:
+            print(f"[!] Errore parsing JSON da server_lookup per {iframe_url}")
+            return None
+        except Exception as e:
+            print(f"[!] Errore imprevisto in get_final_m3u8 per {iframe_url}: {e}")
+            return None
+
+    def get_stream_from_channel_id(channel_id):
+        # LINK_DADDY è una variabile globale
+        embed_url = f"{LINK_DADDY.rstrip('/')}/embed/stream-{channel_id}.php"
+        iframe = get_iframe_url(embed_url)
+        if iframe:
+            return get_final_m3u8(iframe)
+        return None
+    # --- Fine funzioni Daddylive ---
+
+    def fetch_channels_from_daddylive_page(page_url, base_daddy_url):
+        print(f"Tentativo di fetch dei canali da: {page_url}")
+        channels = []
+        seen_daddy_channel_ids = set() # Set per tracciare i channel_id già visti da Daddylive
+        try:
+            response = session.get(page_url, timeout=HTTP_TIMEOUT, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'})
+            response.raise_for_status()
+            soup = BeautifulSoup(response.content, 'html.parser')
+
+            # --- INIZIO LOGICA DI PARSING E FILTRAGGIO SPECIFICA PER DADDYLIVE 24-7 CHANNELS ---
+
+            # Marcatori che suggeriscono un canale NON italiano (per evitare falsi positivi)
+            non_italian_markers = [
+                " (de)", " (fr)", " (es)", " (uk)", " (us)", " (pt)", " (gr)", " (nl)", " (tr)", " (ru)",
+                " deutsch", " france", " español", " arabic", " greek", " turkish", " russian", " albania",
+                " portugal" # Aggiunto basandomi sull'esempio fornito
+            ]
+
+            grid_items = soup.find_all('div', class_='grid-item')
+            print(f"Trovati {len(grid_items)} elementi 'grid-item' nella pagina Daddylive.")
+
+            for item in grid_items:
+                link_tag = item.find('a', href=re.compile(r'/stream/stream-\d+\.php'))
+                if not link_tag:
+                    continue
+
+                strong_tag = link_tag.find('strong')
+                if not strong_tag:
+                    continue
+
+                channel_name_raw = strong_tag.text.strip()
+                href = link_tag.get('href')
+                
+                # Estrai l'ID del canale dall'href, es. /stream/stream-717.php -> 717
+                channel_id_match = re.search(r'/stream/stream-(\d+)\.php', href)
+
+                if channel_id_match and channel_name_raw:
+                    channel_id = channel_id_match.group(1)
+                    lower_channel_name = channel_name_raw.lower()
+
+                    if channel_id in seen_daddy_channel_ids:
+                        print(f"Skipping Daddylive channel '{channel_name_raw}' (ID: {channel_id}) perché l'ID è già stato processato.")
+                        continue # Passa al prossimo item
+
+                    # Filtro primario: deve contenere "italy"
+                    if "italy" in lower_channel_name:
+                        is_confirmed_non_italian_by_marker = False
+                        for marker in non_italian_markers:
+                            if marker in lower_channel_name:
+                                is_confirmed_non_italian_by_marker = True
+                                print(f"Skipping Daddylive channel '{channel_name_raw}' (ID: {channel_id}) perché, pur contenendo 'italy', ha anche un marcatore non italiano: '{marker}'")
+                                break
+                        
+                        if not is_confirmed_non_italian_by_marker:
+                            seen_daddy_channel_ids.add(channel_id) # Aggiungi l'ID al set prima di tentare la risoluzione
+                            print(f"Trovato canale potenzialmente ITALIANO (Daddylive HTML): {channel_name_raw}, ID: {channel_id}. Tentativo di risoluzione stream...")
+                            stream_url = get_stream_from_channel_id(channel_id)
+                            if stream_url:
+                                channels.append((channel_name_raw, stream_url))
+                                print(f"Risolto e aggiunto stream per {channel_name_raw}: {stream_url}")
+                            else:
+                                print(f"Impossibile risolvere lo stream per {channel_name_raw} (ID: {channel_id})")
+                    # else:
+                        # Questo blocco è commentato per non intasare i log con canali non italiani
+                        # Non stampiamo nulla per i canali che non contengono "italy" per non intasare il log
+                        # print(f"Skipping Daddylive channel '{channel_name_raw}' (ID: {channel_id}) perché non contiene 'italy' nel nome.")
+            # --- FINE LOGICA DI PARSING E FILTRAGGIO ---
+
+            if not channels:
+                print(f"Nessun canale estratto/risolto da {page_url}. Controlla la logica di parsing o la struttura della pagina.")
+
+        except requests.RequestException as e:
+            print(f"Errore durante il download da {page_url}: {e}")
+        except Exception as e:
+            print(f"Errore imprevisto durante il parsing di {page_url}: {e}")
+        return channels
 
     def save_m3u8(organized_channels):
         if os.path.exists(OUTPUT_FILE):
@@ -2765,8 +3063,14 @@ def vavoo_italy_channels():
                 channels.sort(key=lambda x: x["name"].lower())
                 for ch in channels:
                     tvg_name_cleaned = re.sub(r"\s*\(.*?\)", "", ch["name"])
-                    f.write(f'#EXTINF:-1 tvg-id="{ch.get("tvg_id", "")}" tvg-name="{tvg_name_cleaned}" tvg-logo="{ch.get("logo", DEFAULT_TVG_ICON)}" group-title="{category}", {ch["name"]}\n')
-                    f.write(f"{PROXY}{ch['url']}\n\n")
+                    final_url = ch['url']
+                    if PROXY:
+                        # Applica il proxy nel formato PROXY_BASE ENCODED_URL
+                        encoded_url = urllib.parse.quote(final_url)
+                        final_url = f"{PROXY.rstrip('/')}{encoded_url}"
+                    
+                    f.write(f'#EXTINF:-1 tvg-id="{ch.get("tvg_id", "")}" tvg-name="{tvg_name_cleaned}" tvg-logo="{ch.get("logo", DEFAULT_TVG_ICON)}" group-title="{category}",{ch["name"]}\n')
+                    f.write(f"{final_url}\n\n")
 
     def main():
         epg_root = fetch_epg(EPG_FILE)
@@ -2775,39 +3079,140 @@ def vavoo_italy_channels():
             return
         logos_dict = fetch_logos(LOGOS_FILE)
         channel_id_map = create_channel_id_map(epg_root)
-        all_links = []
-        for url in BASE_URLS:
-            channels = fetch_channels(url)
-            all_links.extend(filter_italian_channels(channels, url))
+        
+        all_fetched_channels = [] # Conterrà tuple (nome_canale, url_stream)
 
-        manual_channels = get_manual_channels()
+        # 1. Canali da sorgenti JSON (Vavoo)
+        print("\n--- Fetching canali da sorgenti Vavoo (JSON) ---")
+        for base_vavoo_url in BASE_URLS:
+            json_channels_data = fetch_channels(base_vavoo_url)
+            all_fetched_channels.extend(filter_italian_channels(json_channels_data, base_vavoo_url))
 
+        # 2. Canali dalla pagina HTML di Daddylive
+        print("\n--- Fetching canali da Daddylive (HTML) ---")
+        daddylive_247_page_url = f"{LINK_DADDY.rstrip('/')}/24-7-channels.php"
+        scraped_daddylive_channels = fetch_channels_from_daddylive_page(daddylive_247_page_url, LINK_DADDY)
+
+        processed_scraped_channels = []
+        seen_scraped_names = {}
+        # Rinominato seen_scraped_names a seen_daddy_transformed_base_names per chiarezza
+        seen_daddy_transformed_base_names = {}
+        for raw_name, stream_url in scraped_daddylive_channels:
+            # 1. Pulizia iniziale generica del nome grezzo
+            name_after_initial_clean = clean_channel_name(raw_name)
+
+            # 2. Trasformazioni specifiche per Daddylive:
+            #    - Rimuovi "italy" (case insensitive)
+            #    - Converti in maiuscolo
+            # Questo sarà il nome base per la gestione dei duplicati Daddylive
+            base_daddy_name = re.sub(r'italy', '', name_after_initial_clean, flags=re.IGNORECASE).strip()
+            base_daddy_name = re.sub(r'\s+', ' ', base_daddy_name).strip() # Rimuovi spazi doppi
+            base_daddy_name = base_daddy_name.upper()
+            
+            # Rinominare i canali Sky Calcio e Sky Calcio 7 specifici di Daddylive
+            # Questo avviene DOPO la pulizia iniziale e l'uppercase,
+            # e PRIMA della gestione dei duplicati e dell'aggiunta di "(D)"
+            sky_calcio_rename_map = {
+                "SKY CALCIO 1": "SKY SPORT 251",
+                "SKY CALCIO 2": "SKY SPORT 252",
+                "SKY CALCIO 3": "SKY SPORT 253",
+                "SKY CALCIO 4": "SKY SPORT 254",
+                "SKY CALCIO 5": "SKY SPORT 255",
+                "SKY CALCIO 6": "SKY SPORT 256",
+                "SKY CALCIO 7": "DAZN 1"
+            }
+
+            if base_daddy_name in sky_calcio_rename_map:
+                original_bdn_for_log = base_daddy_name
+                base_daddy_name = sky_calcio_rename_map[base_daddy_name]
+                print(f"Rinominato canale Daddylive (HTML) da '{original_bdn_for_log}' a '{base_daddy_name}'")
+
+
+            # Gestione skip DAZN (usa il nome base trasformato per il check)
+            # clean_channel_name potrebbe già aver trasformato "dazn 1" in "DAZN2"
+            if base_daddy_name == "DAZN" or base_daddy_name == "DAZN2":
+                print(f"Skipping canale Daddylive (HTML) a causa della regola DAZN: {raw_name} (base trasformato: {base_daddy_name})")
+                continue
+            
+            # 3. Gestione duplicati basata sul nome base trasformato di Daddylive
+            count = seen_daddy_transformed_base_names.get(base_daddy_name, 0) + 1
+            seen_daddy_transformed_base_names[base_daddy_name] = count
+            
+            # 4. Costruzione del nome finale per Daddylive
+            final_name = base_daddy_name
+            if count > 1:
+                final_name = f"{base_daddy_name} ({count})" # Es. NOME CANALE (2)
+            final_name = f"{final_name} (D)" # Es. NOME CANALE (D) o NOME CANALE (2) (D)
+            
+            processed_scraped_channels.append((final_name, stream_url))
+
+        all_fetched_channels.extend(processed_scraped_channels)
+
+        # 3. Canali manuali
+        manual_channels_data = get_manual_channels()
+
+        # Organizzazione di tutti i canali raccolti
+        print("\n--- Organizzazione canali ---")
         organized_channels = {category: [] for category in CATEGORY_KEYWORDS.keys()}
 
-        for name, url in all_links:
+        # Processa canali da Vavoo e Daddylive HTML (formato: (nome, url))
+        for name, url in all_fetched_channels:
+            # 'name' è il nome finale che verrà visualizzato, 
+            # es. "CANALE SPORT (D) (2)" o "CANALE NEWS (3)" (da Vavoo)
             category = classify_channel(name)
+
+            # Crea un nome base per il lookup di EPG e Logo:
+            name_for_lookup = name
+            # Rimuovi il suffisso (D) specifico di Daddylive, se presente
+            if name_for_lookup.upper().endswith(" (D)"): # Controllo case-insensitive per robustezza
+                # Rimuove l'ultima occorrenza di " (D)" (case insensitive)
+                match_d_suffix = re.search(r'\s*\([Dd]\)$', name_for_lookup)
+                if match_d_suffix:
+                    name_for_lookup = name_for_lookup[:match_d_suffix.start()]
             
-            # Rimuovi il numero tra parentesi per il mapping tvg-id
-            name_for_mapping = re.sub(r'\s*\(\d+\)$', '', name)
-            
-            organized_channels[category].append({
-                "name": name,
+            # Rimuovi suffissi numerici per duplicati, es. (2), (3)...
+            name_for_lookup = re.sub(r'\s*\(\d+\)$', '', name_for_lookup).strip()
+            # A questo punto, name_for_lookup dovrebbe essere il nome del canale "pulito" 
+            # es. "CANALE SPORT" o "CANALE NEWS" (già in maiuscolo se da Daddylive)
+
+            # Logica per assegnazione logo
+            final_logo_url = DEFAULT_TVG_ICON # Inizializza con il logo di default
+            sky_sport_daddy_logo = "https://raw.githubusercontent.com/tv-logo/tv-logos/refs/heads/main/countries/italy/hd/sky-sport-hd-it.png"
+
+            # Controlla se il canale è uno dei canali Daddylive SKY SPORT 251-256
+            # name_for_lookup è il nome base pulito (es. "SKY SPORT 251")
+            # name è il nome completo con suffisso (es. "SKY SPORT 251 (D)")
+            if name.upper().endswith(" (D)"): # Verifica se è un canale Daddylive
+                if re.match(r"SKY SPORT (25[1-6])$", name_for_lookup.upper()):
+                    # È un canale Daddylive SKY SPORT 251-256
+                    final_logo_url = sky_sport_daddy_logo
+                    print(f"Logo specifico '{final_logo_url}' assegnato a Daddylive channel '{name}' (lookup name: '{name_for_lookup}')")
+                else:
+                    # È un canale Daddylive, ma non uno dei SKY SPORT 251-256 target, usa il lookup normale
+                    final_logo_url = logos_dict.get(name_for_lookup.lower(), DEFAULT_TVG_ICON)
+            else:
+                # Non è un canale Daddylive (es. Vavoo), usa il lookup normale
+                final_logo_url = logos_dict.get(name_for_lookup.lower(), DEFAULT_TVG_ICON)
+
+            organized_channels.setdefault(category, []).append({
+                "name": name, # Nome completo da visualizzare
                 "url": url,
-                "tvg_id": channel_id_map.get(normalize_channel_name(name_for_mapping), ""),
-                "logo": logos_dict.get(re.sub(r'\s*\(\d+\)$', '', name.lower()), DEFAULT_TVG_ICON)
+                "tvg_id": channel_id_map.get(normalize_channel_name(name_for_lookup), ""), # Usa il nome pulito per tvg-id
+                "logo": final_logo_url # Usa il logo determinato dalla logica sopra
             })
 
-        for ch in manual_channels:
-            cat = ch.get("category") or classify_channel(ch["name"])
+        # Processa canali manuali (formato: dict)
+        for ch_data in manual_channels_data:
+            cat = ch_data.get("category") or classify_channel(ch_data["name"])
             organized_channels.setdefault(cat, []).append({
-                "name": ch["name"],
-                "url": ch["url"],
-                "tvg_id": ch.get("tvg_id", ""),
-                "logo": ch.get("logo", DEFAULT_TVG_ICON)
+                "name": ch_data["name"],
+                "url": ch_data["url"],
+                "tvg_id": ch_data.get("tvg_id", ""),
+                "logo": ch_data.get("logo", DEFAULT_TVG_ICON)
             })
 
         save_m3u8(organized_channels)
-        print(f"File {OUTPUT_FILE} creato con successo!")
+        print(f"\nFile {OUTPUT_FILE} creato con successo!")
 
     if __name__ == "__main__":
         main()
@@ -2891,7 +3296,7 @@ def removerworld():
     import os
     
     # Lista dei file da eliminare
-    files_to_delete = ["channels_italy.m3u8", "eventi.m3u8", "eventi.xml"]
+    files_to_delete = ["world.m3u8", "channels_italy.m3u8", "eventi.m3u8", "eventi.xml"]
     
     for filename in files_to_delete:
         if os.path.exists(filename):
@@ -2958,9 +3363,9 @@ def main():
 
     # Canali Italia
     try:
-        vavoo_italy_channels()
+        italy_channels()
     except Exception as e:
-        print(f"Errore durante l'esecuzione di vavoo_italy_channels: {e}")
+        print(f"Errore durante l'esecuzione di italy_channels: {e}")
         return
 
     # Canali World e Merge finale
