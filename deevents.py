@@ -30,7 +30,7 @@ def eventi_m3u8_generator():
     LINK_DADDY = os.getenv("LINK_DADDY", "https://daddylive.dad").strip()
     PROXY = os.getenv("PROXYIP", "").strip()  # Proxy HLS 
     JSON_FILE = "daddyliveSchedule.json" 
-    OUTPUT_FILE = "deevents.m3u8" 
+    OUTPUT_FILE = "deevents.m3u" 
      
     HEADERS = { 
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36" 
