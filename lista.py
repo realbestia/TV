@@ -236,8 +236,7 @@ def epg_merger():
     with open(output_xml, 'wb') as f_out:
         tree_finale.write(f_out, encoding='utf-8', xml_declaration=True)
     print(f"File XML salvato: {output_xml}")
-             
-# Funzione per il terzo script (eventi_m3u8_generator.py)
+    
 def eventi_m3u8_generator_world():
     # Codice del terzo script qui
     # Aggiungi il codice del tuo script "eventi_m3u8_generator.py" in questa funzione.
@@ -746,7 +745,8 @@ def eventi_m3u8_generator_world():
      
     def extract_channels_from_json(path): 
         keywords = {"italy", "rai", "italia", "it", "uk", "tnt", "usa", "tennis channel", "tennis stream", "la"} 
-        now = datetime.now()  # ora attuale completa (data+ora) 
+        now = datetime.now()  # Ora attuale completa (data+ora) 
+        yesterday_date = (now - timedelta(days=1)).date() # Data di ieri
      
         with open(path, "r", encoding="utf-8") as f: 
             data = json.load(f) 
@@ -1359,6 +1359,7 @@ def eventi_m3u8_generator():
     def extract_channels_from_json(path): 
         keywords = {"italy", "rai", "italia", "it"} 
         now = datetime.now()  # ora attuale completa (data+ora) 
+        yesterday_date = (now - timedelta(days=1)).date() # Data di ieri
      
         with open(path, "r", encoding="utf-8") as f: 
             data = json.load(f) 
@@ -1373,11 +1374,11 @@ def eventi_m3u8_generator():
                 print(f"[!] Errore parsing data '{date_part}': {e}") 
                 continue 
      
-            # filtro solo per eventi del giorno corrente 
-            if date_obj != now.date(): 
-                continue 
-     
-            date_str = date_obj.strftime("%Y-%m-%d") 
+            is_today = (date_obj == now.date())
+            is_yesterday_target_event = (date_obj == yesterday_date)
+
+            if not (is_today or is_yesterday_target_event):
+                continue # Salta se non è né oggi né un evento target di ieri
      
             for category_raw, event_items in sections.items(): 
                 category = clean_category_name(category_raw) 
@@ -1385,24 +1386,42 @@ def eventi_m3u8_generator():
                     categorized_channels[category] = [] 
      
                 for item in event_items: 
-                    time_str = item.get("time", "00:00") 
-                    try: 
-                        # Parse orario evento 
-                        time_obj = datetime.strptime(time_str, "%H:%M") + timedelta(hours=2)  # correzione timezone? 
-     
-                        # crea datetime completo con data evento e orario evento 
-                        event_datetime = datetime.combine(date_obj, time_obj.time()) 
-     
-                        # Controllo: includi solo se l'evento è iniziato da meno di 2 ore 
-                        if now - event_datetime > timedelta(hours=2): 
-                            # Evento iniziato da più di 2 ore -> salto 
-                            continue 
-     
-                        time_formatted = time_obj.strftime("%H:%M") 
-                    except Exception: 
-                        time_formatted = time_str 
-     
+                    time_str = item.get("time", "00:00") # Orario dal JSON
                     event_title = item.get("event", "Evento") 
+                    
+                    try: 
+                        event_time_from_json = datetime.strptime(time_str, "%H:%M").time()
+
+                        # Logica di filtraggio basata sulla data
+                        if is_today:
+                            # Per gli eventi di oggi, applica la correzione timezone e il filtro "non più vecchio di 2 ore"
+                            time_obj_corrected = datetime.strptime(time_str, "%H:%M") + timedelta(hours=2) # correzione timezone
+                            event_datetime_corrected = datetime.combine(date_obj, time_obj_corrected.time())
+                            
+                            if now - event_datetime_corrected > timedelta(hours=2):
+                                # Evento di oggi iniziato da più di 2 ore -> salto
+                                continue
+                            time_formatted = time_obj_corrected.strftime("%H:%M")
+
+                        elif is_yesterday_target_event:
+                            # Per gli eventi di ieri, controlla se l'orario JSON è tra 00:00 e 04:00
+                            start_filter_time = datetime.strptime("00:00", "%H:%M").time()
+                            end_filter_time = datetime.strptime("04:00", "%H:%M").time()
+                            
+                            if not (start_filter_time <= event_time_from_json <= end_filter_time):
+                                # Evento di ieri fuori dall'intervallo 00:00-04:00 (ora JSON) -> salto
+                                continue
+                            
+                            # Per gli eventi di ieri in questo range, usiamo l'orario corretto per la visualizzazione
+                            time_obj_corrected = datetime.strptime(time_str, "%H:%M") + timedelta(hours=2)
+                            time_formatted = time_obj_corrected.strftime("%H:%M")
+                        
+                        else: # Non dovrebbe accadere a causa del controllo sulla data esterna, ma per sicurezza
+                            continue 
+
+                    except ValueError: # Errore nel parsing di time_str
+                        print(f"[!] Orario evento non valido '{time_str}' per l'evento '{event_title}'. Evento saltato.")
+                        continue
      
                     for ch in item.get("channels", []): 
                         channel_name = ch.get("channel_name", "") 
@@ -1410,14 +1429,13 @@ def eventi_m3u8_generator():
      
                         words = set(re.findall(r'\b\w+\b', channel_name.lower())) 
                         if keywords.intersection(words): 
-                            tvg_name = f"{event_title} ({time_formatted})" 
+                            tvg_name = f"{event_title} ({time_formatted})"
                             categorized_channels[category].append({ 
                                 "tvg_name": tvg_name, 
                                 "channel_name": channel_name, 
                                 "channel_id": channel_id,
                                 "event_title": event_title  # Aggiungiamo il titolo dell'evento per la ricerca del logo
                             }) 
-     
         return categorized_channels 
      
     def generate_m3u_from_schedule(json_file, output_file): 
