@@ -12,10 +12,7 @@ https://ddy6new.newkso.ru/ddy6/premium727/mono.m3u8
 #EXTINF:-1 tvg-name="Motorsport" group-title="Eventi Live",--- Motorsport ---
 https://exemple.m3u8
 
-#EXTINF:-1 tvg-id="formula1aramcospanishgrandprixpractice1" tvg-name="Formula 1 : Aramco Spanish Grand Prix - Practice 1 (13:30)" tvg-logo="https://logospng.org/download/formula-1/formula-1-4096.png" group-title="Eventi Live",Formula 1 : Aramco Spanish Grand Prix - Practice 1 (13:30)
-https://windnew.newkso.ru/wind/premium274/mono.m3u8
-
-#EXTINF:-1 tvg-id="formula3aramcospanishgrandprixqualifying" tvg-name="Formula 3 : Aramco Spanish Grand Prix Qualifying (15:00)" tvg-logo="https://images.seeklogo.com/logo-png/5/2/formula-3-euro-series-logo-png_seeklogo-56757.png" group-title="Eventi Live",Formula 3 : Aramco Spanish Grand Prix Qualifying (15:00)
+#EXTINF:-1 tvg-id="formula3aramcospanishgrandprixqualifying" tvg-name="Formula 3 : Aramco Spanish Grand Prix Qualifying (15:00)" tvg-logo="https://images.seeklogo.com/logo-png/5/2/formula-3-euro-series-logo-png_seeklogo-56757.png?v=1956079763323516600" group-title="Eventi Live",Formula 3 : Aramco Spanish Grand Prix Qualifying (15:00)
 https://windnew.newkso.ru/wind/premium274/mono.m3u8
 
 #EXTINF:-1 tvg-id="formula2aramcospanishgrandprixqualifying" tvg-name="Formula 2 : Aramco Spanish Grand Prix Qualifying (15:45)" tvg-logo="https://www.thesportsdb.com/images/media/league/badge/3iwfjg1536242234.png" group-title="Eventi Live",Formula 2 : Aramco Spanish Grand Prix Qualifying (15:45)
@@ -27,9 +24,9 @@ https://windnew.newkso.ru/wind/premium274/mono.m3u8
 #EXTINF:-1 tvg-name="Darts" group-title="Eventi Live",--- Darts ---
 https://exemple.m3u8
 
-#EXTINF:-1 tvg-id="pdcdartround1europeantour2025" tvg-name="PDC Dart, round 1 | European Tour 2025 (19:00)" tvg-logo="https://mcdart.de/media/fill/540x540x100/4d/c4/3e/1667565595/4441_Winmau_PDC_Dartboard_Surround_1.png" group-title="Eventi Live",PDC Dart, round 1 | European Tour 2025 (19:00)
+#EXTINF:-1 tvg-id="pdcdartround1europeantour2025" tvg-name="PDC Dart, round 1 | European Tour 2025 (19:00)" tvg-logo="https://www.thesportsdb.com/images/media/league/badge/isf07m1555602216.png/preview" group-title="Eventi Live",PDC Dart, round 1 | European Tour 2025 (19:00)
 https://ddy6new.newkso.ru/ddy6/premium427/mono.m3u8
 
-#EXTINF:-1 tvg-id="pdcdartround1europeantour2025" tvg-name="PDC Dart, round 1 | European Tour 2025 (19:00)" tvg-logo="https://mcdart.de/media/fill/540x540x100/4d/c4/3e/1667565595/4441_Winmau_PDC_Dartboard_Surround_1.png" group-title="Eventi Live",PDC Dart, round 1 | European Tour 2025 (19:00)
+#EXTINF:-1 tvg-id="pdcdartround1europeantour2025" tvg-name="PDC Dart, round 1 | European Tour 2025 (19:00)" tvg-logo="https://www.thesportsdb.com/images/media/league/badge/isf07m1555602216.png/preview" group-title="Eventi Live",PDC Dart, round 1 | European Tour 2025 (19:00)
 https://ddy6new.newkso.ru/ddy6/premium641/mono.m3u8
 
