@@ -30,7 +30,7 @@ def eventi_m3u8_generator():
     LINK_DADDY = os.getenv("LINK_DADDY", "https://daddylive.dad").strip()
     PROXY = os.getenv("PROXYIP", "").strip()  # Proxy HLS 
     JSON_FILE = "daddyliveSchedule.json" 
-    OUTPUT_FILE = "deevents.m3u" 
+    OUTPUT_FILE = "deevents.m3u8" 
      
     HEADERS = { 
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36" 
@@ -39,6 +39,9 @@ def eventi_m3u8_generator():
     HTTP_TIMEOUT = 10 
     session = requests.Session() 
     session.headers.update(HEADERS) 
+    # Definisci current_time e three_hours_in_seconds per la logica di caching
+    current_time = time.time()
+    three_hours_in_seconds = 3 * 60 * 60
     
     def clean_category_name(name): 
         # Rimuove tag html come </span> o simili 
@@ -119,11 +122,49 @@ def eventi_m3u8_generator():
                                     return output_filename
                         
                         # Scarica i loghi
-                        response1 = requests.get(logo1_url, timeout=10)
-                        img1 = Image.open(io.BytesIO(response1.content))
+                        img1, img2 = None, None
                         
-                        response2 = requests.get(logo2_url, timeout=10)
-                        img2 = Image.open(io.BytesIO(response2.content))
+                        if logo1_url:
+                            try:
+                                # Aggiungi un User-Agent simile a un browser
+                                logo_headers = {
+                                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+                                }
+                                response1 = requests.get(logo1_url, headers=logo_headers, timeout=10)
+                                response1.raise_for_status() # Controlla errori HTTP
+                                if 'image' in response1.headers.get('Content-Type', '').lower():
+                                    img1 = Image.open(io.BytesIO(response1.content))
+                                    print(f"[✓] Logo1 scaricato con successo da: {logo1_url}")
+                                else:
+                                    print(f"[!] URL logo1 ({logo1_url}) non è un'immagine (Content-Type: {response1.headers.get('Content-Type')}).")
+                                    logo1_url = None # Invalida URL se non è un'immagine
+                            except requests.exceptions.RequestException as e_req:
+                                print(f"[!] Errore scaricando logo1 ({logo1_url}): {e_req}")
+                                logo1_url = None
+                            except Exception as e_pil: # Errore specifico da PIL durante Image.open
+                                print(f"[!] Errore PIL aprendo logo1 ({logo1_url}): {e_pil}")
+                                logo1_url = None
+                        
+                        if logo2_url:
+                            try:
+                                # Aggiungi un User-Agent simile a un browser
+                                logo_headers = {
+                                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+                                }
+                                response2 = requests.get(logo2_url, headers=logo_headers, timeout=10)
+                                response2.raise_for_status() # Controlla errori HTTP
+                                if 'image' in response2.headers.get('Content-Type', '').lower():
+                                    img2 = Image.open(io.BytesIO(response2.content))
+                                    print(f"[✓] Logo2 scaricato con successo da: {logo2_url}")
+                                else:
+                                    print(f"[!] URL logo2 ({logo2_url}) non è un'immagine (Content-Type: {response2.headers.get('Content-Type')}).")
+                                    logo2_url = None # Invalida URL se non è un'immagine
+                            except requests.exceptions.RequestException as e_req:
+                                print(f"[!] Errore scaricando logo2 ({logo2_url}): {e_req}")
+                                logo2_url = None
+                            except Exception as e_pil: # Errore specifico da PIL durante Image.open
+                                print(f"[!] Errore PIL aprendo logo2 ({logo2_url}): {e_pil}")
+                                logo2_url = None
                         
                         # Carica l'immagine VS (assicurati che esista nella directory corrente)
                         vs_path = "vs.png"
@@ -142,6 +183,11 @@ def eventi_m3u8_generator():
                             except:
                                 font = ImageFont.load_default()
                             draw.text((30, 30), "VS", fill=(255, 0, 0), font=font)
+                        
+                        # Procedi con la combinazione solo se entrambi i loghi sono stati caricati con successo
+                        if not (img1 and img2):
+                            print(f"[!] Impossibile caricare entrambi i loghi come immagini valide per la combinazione. Logo1 caricato: {bool(img1)}, Logo2 caricato: {bool(img2)}.")
+                            raise ValueError("Uno o entrambi i loghi non sono stati caricati correttamente.") # Questo forzerà l'except sottostante
                         
                         # Ridimensiona le immagini a dimensioni uniformi
                         size = (150, 150)
@@ -198,7 +244,7 @@ def eventi_m3u8_generator():
                     except Exception as e:
                         print(f"[!] Errore nella creazione dell'immagine combinata: {e}")
                         # Se fallisce, restituisci solo il primo logo trovato
-                        return logo1_url
+                        return logo1_url or logo2_url
                 
                 # Se non abbiamo trovato entrambi i loghi, restituisci quello che abbiamo
                 return logo1_url or logo2_url
@@ -530,13 +576,13 @@ def eventi_m3u8_generator():
         categorized_channels = extract_channels_from_json(json_file) 
      
         with open(output_file, "w", encoding="utf-8") as f: 
-            f.write("#EXTM3U\n") 
+            f.write("#EXTM3U x-tvg-url="https://raw.githubusercontent.com/realbestia/TV/refs/heads/main/deevents.xml\n\n") 
      
             for category, channels in categorized_channels.items(): 
                 if not channels: 
                     continue 
      
-                # Spacer con nome categoria pulito e group-title "Live Events" 
+                # Spacer con nome categoria pulito e group-title "Eventi Live" 
                 f.write(f'#EXTINF:-1 tvg-name="{category}" group-title="Eventi Live",--- {category} ---\nhttps://exemple.m3u8\n\n') 
      
                 for ch in channels: 
@@ -554,7 +600,7 @@ def eventi_m3u8_generator():
                     try: 
                         stream = get_stream_from_channel_id(channel_id) 
                         if stream: 
-                            f.write(f'#EXTINF:-1 tvg-id="{channel_id}" tvg-name="{tvg_name}"{logo_attribute} group-title="Live Events",{tvg_name}\n{stream}\n\n') 
+                            f.write(f'#EXTINF:-1 tvg-id="{channel_id}" tvg-name="{tvg_name}"{logo_attribute} group-title="Eventi Live",{tvg_name}\n{stream}\n\n') 
                             print(f"[✓] {tvg_name}" + (f" (logo trovato)" if logo_url else " (nessun logo trovato)")) 
                         else: 
                             print(f"[✗] {tvg_name} - Nessuno stream trovato") 
