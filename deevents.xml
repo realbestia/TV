@@ -13,6 +13,58 @@
     <desc lang="it">Australia - A-League : Melbourne City vs Melbourne Victory</desc>
     <category lang="it">Soccer</category>
   </programme>
+  <channel id="SouthKoreaKLeague2AnsanGreenersvsSeongnam">
+    <display-name>South Korea - K League 2 : Ansan Greeners vs Seongnam</display-name>
+  </channel>
+  <programme start="20250531000000 +0200" stop="20250531120000 +0200" channel="SouthKoreaKLeague2AnsanGreenersvsSeongnam">
+    <title lang="it">Fängt um 12:00 an.</title>
+    <desc lang="it">South Korea - K League 2 : Ansan Greeners vs Seongnam.</desc>
+    <category lang="it">Bekanntmachung</category>
+  </programme>
+  <programme start="20250531120000 +0200" stop="20250531140000 +0200" channel="SouthKoreaKLeague2AnsanGreenersvsSeongnam">
+    <title lang="it">Live Streaming.</title>
+    <desc lang="it">South Korea - K League 2 : Ansan Greeners vs Seongnam</desc>
+    <category lang="it">Soccer</category>
+  </programme>
+  <channel id="SouthKoreaKLeague1AnyangvsDaejeonCitizen">
+    <display-name>South Korea - K League 1 : Anyang vs Daejeon Citizen</display-name>
+  </channel>
+  <programme start="20250531000000 +0200" stop="20250531120000 +0200" channel="SouthKoreaKLeague1AnyangvsDaejeonCitizen">
+    <title lang="it">Fängt um 12:00 an.</title>
+    <desc lang="it">South Korea - K League 1 : Anyang vs Daejeon Citizen.</desc>
+    <category lang="it">Bekanntmachung</category>
+  </programme>
+  <programme start="20250531120000 +0200" stop="20250531140000 +0200" channel="SouthKoreaKLeague1AnyangvsDaejeonCitizen">
+    <title lang="it">Live Streaming.</title>
+    <desc lang="it">South Korea - K League 1 : Anyang vs Daejeon Citizen</desc>
+    <category lang="it">Soccer</category>
+  </programme>
+  <channel id="SouthKoreaKLeague2CheongjuvsGyeongnam">
+    <display-name>South Korea - K League 2 : Cheongju vs Gyeongnam</display-name>
+  </channel>
+  <programme start="20250531000000 +0200" stop="20250531120000 +0200" channel="SouthKoreaKLeague2CheongjuvsGyeongnam">
+    <title lang="it">Fängt um 12:00 an.</title>
+    <desc lang="it">South Korea - K League 2 : Cheongju vs Gyeongnam.</desc>
+    <category lang="it">Bekanntmachung</category>
+  </programme>
+  <programme start="20250531120000 +0200" stop="20250531140000 +0200" channel="SouthKoreaKLeague2CheongjuvsGyeongnam">
+    <title lang="it">Live Streaming.</title>
+    <desc lang="it">South Korea - K League 2 : Cheongju vs Gyeongnam</desc>
+    <category lang="it">Soccer</category>
+  </programme>
+  <channel id="SouthKoreaKLeague1FCSeoulvsJejuSK">
+    <display-name>South Korea - K League 1 : FC Seoul vs Jeju SK</display-name>
+  </channel>
+  <programme start="20250531000000 +0200" stop="20250531120000 +0200" channel="SouthKoreaKLeague1FCSeoulvsJejuSK">
+    <title lang="it">Fängt um 12:00 an.</title>
+    <desc lang="it">South Korea - K League 1 : FC Seoul vs Jeju SK.</desc>
+    <category lang="it">Bekanntmachung</category>
+  </programme>
+  <programme start="20250531120000 +0200" stop="20250531140000 +0200" channel="SouthKoreaKLeague1FCSeoulvsJejuSK">
+    <title lang="it">Live Streaming.</title>
+    <desc lang="it">South Korea - K League 1 : FC Seoul vs Jeju SK</desc>
+    <category lang="it">Soccer</category>
+  </programme>
   <channel id="AustraliaSupercarsChampionship2025PerthSuper440Race1">
     <display-name>Australia Supercars Championship 2025: Perth Super 440 (Race 1)</display-name>
   </channel>
@@ -50,6 +102,32 @@
   <programme start="20250531190000 +0200" stop="20250531210000 +0200" channel="HandballBundesligaTHWKielvsHSVHamburg">
     <title lang="it">Live Streaming.</title>
     <desc lang="it">Handball-Bundesliga : THW Kiel vs. HSV Hamburg</desc>
+    <category lang="it">Handball</category>
+  </programme>
+  <channel id="GermanyBundesligaGummersbachvsLeipzig">
+    <display-name>Germany - Bundesliga : Gummersbach vs Leipzig</display-name>
+  </channel>
+  <programme start="20250531000000 +0200" stop="20250531190000 +0200" channel="GermanyBundesligaGummersbachvsLeipzig">
+    <title lang="it">Fängt um 19:00 an.</title>
+    <desc lang="it">Germany - Bundesliga : Gummersbach vs Leipzig.</desc>
+    <category lang="it">Bekanntmachung</category>
+  </programme>
+  <programme start="20250531190000 +0200" stop="20250531210000 +0200" channel="GermanyBundesligaGummersbachvsLeipzig">
+    <title lang="it">Live Streaming.</title>
+    <desc lang="it">Germany - Bundesliga : Gummersbach vs Leipzig</desc>
+    <category lang="it">Handball</category>
+  </programme>
+  <channel id="GermanyBundesligaPotsdamvsGoppingen">
+    <display-name>Germany - Bundesliga : Potsdam vs Goppingen</display-name>
+  </channel>
+  <programme start="20250531000000 +0200" stop="20250531190000 +0200" channel="GermanyBundesligaPotsdamvsGoppingen">
+    <title lang="it">Fängt um 19:00 an.</title>
+    <desc lang="it">Germany - Bundesliga : Potsdam vs Goppingen.</desc>
+    <category lang="it">Bekanntmachung</category>
+  </programme>
+  <programme start="20250531190000 +0200" stop="20250531210000 +0200" channel="GermanyBundesligaPotsdamvsGoppingen">
+    <title lang="it">Live Streaming.</title>
+    <desc lang="it">Germany - Bundesliga : Potsdam vs Goppingen</desc>
     <category lang="it">Handball</category>
   </programme>
   <channel id="NationalRugbyLeagueNQCowboysvsWestsTigers">
