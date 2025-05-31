@@ -1,2 +1,86 @@
 #EXTM3U x-tvg-url="https://raw.githubusercontent.com/realbestia/TV/refs/heads/main/deevents.xml
 
+#EXTINF:-1 tvg-name="Soccer" group-title="Eventi Live",--- Soccer ---
+https://exemple.m3u8
+
+#EXTINF:-1 tvg-id="australiaaleaguemelbournecityvsmelbournevictory" tvg-name="Australia - A-League : Melbourne City vs Melbourne Victory (11:40)" tvg-logo="https://raw.githubusercontent.com/realbestia/TV/main/logos/Melbourne City_vs_Melbourne Victory.png" group-title="Eventi Live",Australia - A-League : Melbourne City vs Melbourne Victory (11:40)
+https://dokko1new.newkso.ru/dokko1/premium571/mono.m3u8
+
+#EXTINF:-1 tvg-id="uefachampionsleaguefinalpsgvsinternazionale" tvg-name="UEFA Champions League Final : PSG vs Internazionale (21:00)" tvg-logo="https://raw.githubusercontent.com/realbestia/TV/main/logos/PSG_vs_Internazionale.png" group-title="Eventi Live",UEFA Champions League Final : PSG vs Internazionale (21:00)
+https://zekonew.newkso.ru/zeko/premium435/mono.m3u8
+
+#EXTINF:-1 tvg-id="uefachampionsleaguefinalpsgvsinternazionale" tvg-name="UEFA Champions League Final : PSG vs Internazionale (21:00)" tvg-logo="https://raw.githubusercontent.com/realbestia/TV/main/logos/PSG_vs_Internazionale.png" group-title="Eventi Live",UEFA Champions League Final : PSG vs Internazionale (21:00)
+https://ddy6new.newkso.ru/ddy6/premium727/mono.m3u8
+
+#EXTINF:-1 tvg-id="uefachampionsleaguefinalpsgvsinternazionale" tvg-name="UEFA Champions League Final : PSG vs Internazionale (21:00)" tvg-logo="https://raw.githubusercontent.com/realbestia/TV/main/logos/PSG_vs_Internazionale.png" group-title="Eventi Live",UEFA Champions League Final : PSG vs Internazionale (21:00)
+https://ddy6new.newkso.ru/ddy6/premium426/mono.m3u8
+
+#EXTINF:-1 tvg-name="Motorsport" group-title="Eventi Live",--- Motorsport ---
+https://exemple.m3u8
+
+#EXTINF:-1 tvg-id="australiasupercarschampionship2025perthsuper440race1" tvg-name="Australia Supercars Championship 2025: Perth Super 440 (Race 1) (08:00)" tvg-logo="https://crystalpng.com/wp-content/uploads/2025/01/super-bowl-logo-2025-768x768.png" group-title="Eventi Live",Australia Supercars Championship 2025: Perth Super 440 (Race 1) (08:00)
+https://dokko1new.newkso.ru/dokko1/premium640/mono.m3u8
+
+#EXTINF:-1 tvg-id="formula3aramcospanishgrandprixsprintrace" tvg-name="Formula 3 : Aramco Spanish Grand Prix - Sprint Race (10:00)" tvg-logo="http://gosuppy.com/cdn/shop/products/suppy_f3.png?v=1669819550" group-title="Eventi Live",Formula 3 : Aramco Spanish Grand Prix - Sprint Race (10:00)
+https://windnew.newkso.ru/wind/premium274/mono.m3u8
+
+#EXTINF:-1 tvg-id="australiasupercarschampionship2025perthsuper440race2" tvg-name="Australia Supercars Championship 2025: Perth Super 440 (Race 2) (10:10)" tvg-logo="https://crystalpng.com/wp-content/uploads/2025/01/super-bowl-logo-2025-768x768.png" group-title="Eventi Live",Australia Supercars Championship 2025: Perth Super 440 (Race 2) (10:10)
+https://dokko1new.newkso.ru/dokko1/premium640/mono.m3u8
+
+#EXTINF:-1 tvg-id="formula1aramcospanishgrandprixpractice3" tvg-name="Formula 1 : Aramco Spanish Grand Prix - Practice 3 (12:30)" tvg-logo="https://logospng.org/download/formula-1/formula-1-512.png" group-title="Eventi Live",Formula 1 : Aramco Spanish Grand Prix - Practice 3 (12:30)
+https://windnew.newkso.ru/wind/premium274/mono.m3u8
+
+#EXTINF:-1 tvg-id="formula2aramcospanishgrandprixsprintrace" tvg-name="Formula 2 : Aramco Spanish Grand Prix - Sprint Race (14:15)" tvg-logo="https://logospng.org/download/formula-1/formula-1-512.png" group-title="Eventi Live",Formula 2 : Aramco Spanish Grand Prix - Sprint Race (14:15)
+https://windnew.newkso.ru/wind/premium274/mono.m3u8
+
+#EXTINF:-1 tvg-id="formula1aramcospanishgrandprixqualifying" tvg-name="Formula 1 : Aramco Spanish Grand Prix - Qualifying (16:00)" tvg-logo="https://logospng.org/download/formula-1/formula-1-512.png" group-title="Eventi Live",Formula 1 : Aramco Spanish Grand Prix - Qualifying (16:00)
+https://windnew.newkso.ru/wind/premium274/mono.m3u8
+
+#EXTINF:-1 tvg-id="indycarseriesseasonqualifyingsessionstreetsofdetroit" tvg-name="IndyCar Series Season Qualifying Session - Streets of Detroit (18:00)" tvg-logo="https://cdn.freebiesupply.com/logos/large/2x/indycar-series-logo-png-transparent.png" group-title="Eventi Live",IndyCar Series Season Qualifying Session - Streets of Detroit (18:00)
+https://windnew.newkso.ru/wind/premium274/mono.m3u8
+
+#EXTINF:-1 tvg-id="indycarseriesseasonqualifyingsessionstreetsofdetroit" tvg-name="IndyCar Series Season Qualifying Session - Streets of Detroit (18:00)" tvg-logo="https://cdn.freebiesupply.com/logos/large/2x/indycar-series-logo-png-transparent.png" group-title="Eventi Live",IndyCar Series Season Qualifying Session - Streets of Detroit (18:00)
+https://dokko1new.newkso.ru/dokko1/premium556/mono.m3u8
+
+#EXTINF:-1 tvg-name="Darts" group-title="Eventi Live",--- Darts ---
+https://exemple.m3u8
+
+#EXTINF:-1 tvg-id="pdcdartround2europeantour2025" tvg-name="PDC Dart, round 2 | European Tour 2025 (13:00)" tvg-logo="https://www.wwbic.com/wp-content/uploads/2024/11/Master-2025-WWBIC-Logo.png" group-title="Eventi Live",PDC Dart, round 2 | European Tour 2025 (13:00)
+https://ddy6new.newkso.ru/ddy6/premium427/mono.m3u8
+
+#EXTINF:-1 tvg-id="pdcdartround2europeantour2025" tvg-name="PDC Dart, round 2 | European Tour 2025 (13:00)" tvg-logo="https://womenchurch2024.com/wp-content/uploads/2023/03/Giubileum-Latino_V1.png" group-title="Eventi Live",PDC Dart, round 2 | European Tour 2025 (13:00)
+https://ddy6new.newkso.ru/ddy6/premium641/mono.m3u8
+
+#EXTINF:-1 tvg-id="pdcdartround2europeantour2025" tvg-name="PDC Dart, round 2 | European Tour 2025 (19:00)" tvg-logo="https://www.wwbic.com/wp-content/uploads/2024/11/Master-2025-WWBIC-Logo.png" group-title="Eventi Live",PDC Dart, round 2 | European Tour 2025 (19:00)
+https://ddy6new.newkso.ru/ddy6/premium427/mono.m3u8
+
+#EXTINF:-1 tvg-id="pdcdartround2europeantour2025" tvg-name="PDC Dart, round 2 | European Tour 2025 (19:00)" tvg-logo="https://www.wwbic.com/wp-content/uploads/2024/11/Master-2025-WWBIC-Logo.png" group-title="Eventi Live",PDC Dart, round 2 | European Tour 2025 (19:00)
+https://ddy6new.newkso.ru/ddy6/premium641/mono.m3u8
+
+#EXTINF:-1 tvg-name="Handball" group-title="Eventi Live",--- Handball ---
+https://exemple.m3u8
+
+#EXTINF:-1 tvg-id="handballbundesligathwkielvshsvhamburg" tvg-name="Handball-Bundesliga : THW Kiel vs. HSV Hamburg (19:00)" tvg-logo="https://raw.githubusercontent.com/realbestia/TV/main/logos/THW Kiel_vs_HSV Hamburg.png" group-title="Eventi Live",Handball-Bundesliga : THW Kiel vs. HSV Hamburg (19:00)
+https://ddy6new.newkso.ru/ddy6/premium109/mono.m3u8
+
+#EXTINF:-1 tvg-name="Ice Hockey" group-title="Eventi Live",--- Ice Hockey ---
+https://exemple.m3u8
+
+#EXTINF:-1 tvg-id="nhldallasstarsvsedmontonoilers" tvg-name="NHL : Dallas Stars vs Edmonton Oilers (02:00)" tvg-logo="https://raw.githubusercontent.com/realbestia/TV/main/logos/Dallas Stars_vs_Edmonton Oilers.png" group-title="Eventi Live",NHL : Dallas Stars vs Edmonton Oilers (02:00)
+https://ddy6new.newkso.ru/ddy6/premium557/mono.m3u8
+
+#EXTINF:-1 tvg-id="nhldallasstarsvsedmontonoilers" tvg-name="NHL : Dallas Stars vs Edmonton Oilers (02:00)" tvg-logo="https://raw.githubusercontent.com/realbestia/TV/main/logos/Dallas Stars_vs_Edmonton Oilers.png" group-title="Eventi Live",NHL : Dallas Stars vs Edmonton Oilers (02:00)
+https://dokko1new.newkso.ru/dokko1/premium556/mono.m3u8
+
+#EXTINF:-1 tvg-name="Rugby League" group-title="Eventi Live",--- Rugby League ---
+https://exemple.m3u8
+
+#EXTINF:-1 tvg-id="nationalrugbyleaguenqcowboysvsweststigers" tvg-name="National Rugby League : NQ Cowboys vs Wests Tigers (09:30)" tvg-logo="https://raw.githubusercontent.com/realbestia/TV/main/logos/NQ Cowboys_vs_Wests Tigers.png" group-title="Eventi Live",National Rugby League : NQ Cowboys vs Wests Tigers (09:30)
+https://dokko1new.newkso.ru/dokko1/premium640/mono.m3u8
+
+#EXTINF:-1 tvg-id="nationalrugbyleaguemanlyseaeaglesvsbrisbanebroncos" tvg-name="National Rugby League : Manly Sea Eagles vs Brisbane Broncos (11:35)" tvg-logo="https://raw.githubusercontent.com/realbestia/TV/main/logos/Manly Sea Eagles_vs_Brisbane Broncos.png" group-title="Eventi Live",National Rugby League : Manly Sea Eagles vs Brisbane Broncos (11:35)
+https://dokko1new.newkso.ru/dokko1/premium640/mono.m3u8
+
+#EXTINF:-1 tvg-id="superleaguerugbyleedsrhinosvswakefieldtrinity" tvg-name="Super League Rugby : Leeds Rhinos vs Wakefield Trinity (15:30)" tvg-logo="https://raw.githubusercontent.com/realbestia/TV/main/logos/Leeds Rhinos_vs_Wakefield Trinity.png" group-title="Eventi Live",Super League Rugby : Leeds Rhinos vs Wakefield Trinity (15:30)
+https://dokko1new.newkso.ru/dokko1/premium640/mono.m3u8
+
