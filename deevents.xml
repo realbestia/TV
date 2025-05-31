@@ -39,17 +39,4 @@
     <desc lang="it">Germany - Bundesliga : Potsdam vs Goppingen</desc>
     <category lang="it">Handball</category>
   </programme>
-  <channel id="SuperLeagueRugbyLeedsRhinosvsWakefieldTrinity">
-    <display-name>Super League Rugby : Leeds Rhinos vs Wakefield Trinity</display-name>
-  </channel>
-  <programme start="20250531000000 +0200" stop="20250531153000 +0200" channel="SuperLeagueRugbyLeedsRhinosvsWakefieldTrinity">
-    <title lang="it">Fängt um 15:30 an.</title>
-    <desc lang="it">Super League Rugby : Leeds Rhinos vs Wakefield Trinity.</desc>
-    <category lang="it">Bekanntmachung</category>
-  </programme>
-  <programme start="20250531153000 +0200" stop="20250531173000 +0200" channel="SuperLeagueRugbyLeedsRhinosvsWakefieldTrinity">
-    <title lang="it">Live Streaming.</title>
-    <desc lang="it">Super League Rugby : Leeds Rhinos vs Wakefield Trinity</desc>
-    <category lang="it">Rugby League</category>
-  </programme>
 </tv>
