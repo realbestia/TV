@@ -1496,7 +1496,6 @@ def eventi_sps():
     import re
     import os
     from bs4 import BeautifulSoup
-    from urllib.parse import quote_plus
     from datetime import datetime # Aggiunto import per la data corrente
     from dotenv import load_dotenv
 
@@ -1692,14 +1691,9 @@ def eventi_sps():
                 if not tvg_name_final: # Fallback se il titolo è vuoto
                     tvg_name_final = "Eventi Live"
 
-                # Codifica gli header per l'URL
-                encoded_ua = quote_plus(headers["User-Agent"])
-                encoded_referer = quote_plus(headers["Referer"])
-                encoded_origin = quote_plus(headers["Origin"])
-
                 # Costruisci l'URL finale con il proxy e gli header
                 # stream_url qui è l'URL originale dello stream (es. https://xuione.sportstreaming.net/...)
-                final_stream_url = f"{PROXY}{stream_url}&h_user-agent={encoded_ua}&h_referer={encoded_referer}&h_origin={encoded_origin}"
+                final_stream_url = f"{PROXY}{stream_url}&h_user-agent={headers['User-Agent']}&h_referer={headers['Referer']}&h_origin={headers['Origin']}"
 
                 group_title_text = "Sport" if is_perma else "Eventi Live"
 
