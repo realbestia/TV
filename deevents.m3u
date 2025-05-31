@@ -12,19 +12,10 @@ https://ddy6new.newkso.ru/ddy6/premium727/mono.m3u8
 #EXTINF:-1 tvg-id="uefachampionsleaguefinalpsgvsinternazionale" tvg-name="UEFA Champions League Final : PSG vs Internazionale (21:00)" tvg-logo="https://raw.githubusercontent.com/realbestia/TV/main/logos/PSG_vs_Internazionale.png" group-title="Eventi Live",UEFA Champions League Final : PSG vs Internazionale (21:00)
 https://ddy6new.newkso.ru/ddy6/premium426/mono.m3u8
 
-#EXTINF:-1 tvg-name="Motorsport" group-title="Eventi Live",--- Motorsport ---
-https://exemple.m3u8
-
-#EXTINF:-1 tvg-id="indycarseriesseasonqualifyingsessionstreetsofdetroit" tvg-name="IndyCar Series Season Qualifying Session - Streets of Detroit (18:00)" tvg-logo="https://logodix.com/logo/679140.png" group-title="Eventi Live",IndyCar Series Season Qualifying Session - Streets of Detroit (18:00)
-https://windnew.newkso.ru/wind/premium274/mono.m3u8
-
-#EXTINF:-1 tvg-id="indycarseriesseasonqualifyingsessionstreetsofdetroit" tvg-name="IndyCar Series Season Qualifying Session - Streets of Detroit (18:00)" tvg-logo="https://logodix.com/logo/679140.png" group-title="Eventi Live",IndyCar Series Season Qualifying Session - Streets of Detroit (18:00)
-https://dokko1new.newkso.ru/dokko1/premium556/mono.m3u8
-
 #EXTINF:-1 tvg-name="Darts" group-title="Eventi Live",--- Darts ---
 https://exemple.m3u8
 
-#EXTINF:-1 tvg-id="pdcdartround2europeantour2025" tvg-name="PDC Dart, round 2 | European Tour 2025 (19:00)" tvg-logo="https://cdn.shopify.com/s/files/1/1375/9099/products/Unicorn_Eclipse_HD2_Board_530x@2x.png?v=1536424014" group-title="Eventi Live",PDC Dart, round 2 | European Tour 2025 (19:00)
+#EXTINF:-1 tvg-id="pdcdartround2europeantour2025" tvg-name="PDC Dart, round 2 | European Tour 2025 (19:00)" tvg-logo="https://dartsturm.de/media/98/ce/36/1696498441/Winmau - PDC Clearzone Dart Teppichmatte.png" group-title="Eventi Live",PDC Dart, round 2 | European Tour 2025 (19:00)
 https://ddy6new.newkso.ru/ddy6/premium427/mono.m3u8
 
 #EXTINF:-1 tvg-id="pdcdartround2europeantour2025" tvg-name="PDC Dart, round 2 | European Tour 2025 (19:00)" tvg-logo="https://www.thesportsdb.com/images/media/league/badge/isf07m1555602216.png" group-title="Eventi Live",PDC Dart, round 2 | European Tour 2025 (19:00)
