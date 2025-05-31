@@ -2978,7 +2978,7 @@ def removerworld():
     import os
     
     # Lista dei file da eliminare
-    files_to_delete = ["eventisps.m3u8", "world.m3u8", "channels_italy.m3u8", "eventi.m3u8", "eventi.xml"]
+    files_to_delete = ["eventisps.m3u8", "channels_italy.m3u8", "eventi.m3u8", "eventi.xml"]
     
     for filename in files_to_delete:
         if os.path.exists(filename):
