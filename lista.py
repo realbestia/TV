@@ -29,6 +29,7 @@ def merger_playlist():
     url1 = "channels_italy.m3u8"  # File locale
     url2 = "eventi.m3u8"   
     url3 = "https://raw.githubusercontent.com/Brenders/Pluto-TV-Italia-M3U/main/PlutoItaly.m3u"  # Remoto
+    url5 = "eventisps.m3u8"      # File locale (aggiunto come in merger_playlistworld)
     
     # Funzione per scaricare o leggere una playlist
     def download_playlist(source, append_params=False, exclude_group_title=None):
@@ -55,9 +56,10 @@ def merger_playlist():
     playlist1 = download_playlist(url1)
     playlist2 = download_playlist(url2, append_params=True)
     playlist3 = download_playlist(url3)
+    playlist5 = download_playlist(url5)
     
     # Unisci le playlist
-    lista = playlist1 + "\n" + playlist2 + "\n" + playlist3
+    lista = playlist1 + "\n" + playlist2 + "\n" + playlist3 + "\n" + playlist5 # Aggiunto playlist5 all'unione
     
     # Aggiungi intestazione EPG
     lista = f'#EXTM3U x-tvg-url="https://raw.githubusercontent.com/{NOMEGITHUB}/{NOMEREPO}/refs/heads/main/epg.xml"\n' + lista
@@ -87,10 +89,11 @@ def merger_playlistworld():
     NOMEGITHUB = os.getenv("NOMEGITHUB", "").strip()
     
     # Percorsi o URL delle playlist M3U8
-    url1 = "channels_italy.m3u8"  # File locale
+    url1 = "channels_italy.m3u8"  
     url2 = "eventi.m3u8"   
-    url3 = "https://raw.githubusercontent.com/Brenders/Pluto-TV-Italia-M3U/main/PlutoItaly.m3u"  # Remoto
-    url4 = "world.m3u8"           # File locale
+    url3 = "https://raw.githubusercontent.com/Brenders/Pluto-TV-Italia-M3U/main/PlutoItaly.m3u" 
+    url4 = "world.m3u8"           
+    url5 = "eventisps.m3u8"      
     
     # Funzione per scaricare o leggere una playlist
     def download_playlist(source, append_params=False, exclude_group_title=None):
@@ -118,9 +121,10 @@ def merger_playlistworld():
     playlist2 = download_playlist(url2, append_params=True)
     playlist3 = download_playlist(url3)
     playlist4 = download_playlist(url4, exclude_group_title="Italy")
+    playlist5 = download_playlist(url5)
     
     # Unisci le playlist
-    lista = playlist1 + "\n" + playlist2 + "\n" + playlist3 + "\n" + playlist4
+    lista = playlist1 + "\n" + playlist2 + "\n" + playlist3 + "\n" + playlist4 + "\n" + playlist5
     
     # Aggiungi intestazione EPG
     lista = f'#EXTM3U x-tvg-url="https://raw.githubusercontent.com/{NOMEGITHUB}/{NOMEREPO}/refs/heads/main/epg.xml"\n' + lista
@@ -813,6 +817,10 @@ def eventi_m3u8_generator_world():
      
         with open(output_file, "w", encoding="utf-8") as f: 
             f.write("#EXTM3U\n") 
+
+            # Aggiungi il canale iniziale/informativo
+            f.write(f'#EXTINF:-1 tvg-name="DADDYLIVE" group-title="Eventi Live",DADDYLIVE\n')
+            f.write("https://example.com.m3u8\n\n")
      
             for category, channels in categorized_channels.items(): 
                 if not channels: 
@@ -1443,6 +1451,10 @@ def eventi_m3u8_generator():
      
         with open(output_file, "w", encoding="utf-8") as f: 
             f.write("#EXTM3U\n") 
+
+            # Aggiungi il canale iniziale/informativo
+            f.write(f'#EXTINF:-1 tvg-name="DADDYLIVE" group-title="Eventi Live",DADDYLIVE\n')
+            f.write("https://example.com.m3u8\n\n")
      
             for category, channels in categorized_channels.items(): 
                 if not channels: 
@@ -1478,6 +1490,257 @@ def eventi_m3u8_generator():
      
     if __name__ == "__main__": 
         generate_m3u_from_schedule(JSON_FILE, OUTPUT_FILE)
+        
+def eventi_sps():
+    import requests
+    import re
+    import os
+    from bs4 import BeautifulSoup
+    from urllib.parse import quote_plus
+    from datetime import datetime # Aggiunto import per la data corrente
+    from dotenv import load_dotenv
+
+    load_dotenv()
+
+    # Prefisso per il proxy dello stream
+    PROXY = os.getenv("PROXYIP", "").strip()
+
+    # URL di partenza (homepage o pagina con elenco eventi)
+    base_url = "https://www.sportstreaming.net/"
+    headers = {
+        "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1",
+        "Origin": "https://www.sportstreaming.net",
+        "Referer": "https://www.sportstreaming.net/"
+    }
+
+    # Funzione helper per formattare la data dell'evento
+    def format_event_date(date_text):
+        """
+        Formatta la data dell'evento e restituisce la stringa formattata completa e una stringa DD/MM per il confronto.
+        Restituisce: (full_formatted_date, simple_date_dd_mm)
+        Esempio: ("20:45 23/07", "23/07") o ("", "") se non parsabile.
+        """
+        if not date_text:
+            return "", ""
+        match = re.search(
+            r'(?:[a-zA-Zì]+\s+)?(\d{1,2})\s+([a-zA-Z]+)\s+(?:ore\s+)?(\d{1,2}:\d{2})',
+            date_text,
+            re.IGNORECASE
+        )
+        if match:
+            day_str = match.group(1).zfill(2)
+            month_name = match.group(2).lower()
+            time = match.group(3)
+            month_number = ITALIAN_MONTHS_MAP.get(month_name)
+            if month_number:
+                return f"{time} {day_str}/{month_number}", f"{day_str}/{month_number}"
+        return "", ""
+
+    # Mappa dei mesi italiani per la formattazione della data
+    ITALIAN_MONTHS_MAP = {
+        "gennaio": "01", "febbraio": "02", "marzo": "03", "aprile": "04",
+        "maggio": "05", "giugno": "06", "luglio": "07", "agosto": "08",
+        "settembre": "09", "ottobre": "10", "novembre": "11", "dicembre": "12"
+    }
+
+    # Funzione per trovare i link alle pagine evento
+    def find_event_pages():
+        try:
+            response = requests.get(base_url, headers=headers)
+            response.raise_for_status()
+            soup = BeautifulSoup(response.text, 'html.parser')
+
+            event_links = []
+            seen_links = set()
+            for a in soup.find_all('a', href=True):
+                href = a['href']
+                if re.match(r'/live-(perma-)?\d+', href):
+                    full_url = base_url + href.lstrip('/')
+                    if full_url not in seen_links:
+                        event_links.append(full_url)
+                        seen_links.add(full_url)
+                elif re.match(r'https://www\.sportstreaming\.net/live-(perma-)?\d+', href):
+                    if href not in seen_links:
+                        event_links.append(href)
+                        seen_links.add(href)
+
+            return event_links
+
+        except requests.RequestException as e:
+            print(f"Errore durante la ricerca delle pagine evento: {e}")
+            return []
+
+    # Funzione per estrarre il flusso video e i dettagli dell'evento dalla pagina evento
+    def get_event_details(event_url):
+        try:
+            response = requests.get(event_url, headers=headers)
+            response.raise_for_status()
+            soup = BeautifulSoup(response.text, 'html.parser')
+
+            stream_url = None
+            element = None
+            for iframe in soup.find_all('iframe'):
+                src = iframe.get('src')
+                if src and ("stream" in src.lower() or re.search(r'\.(m3u8|mp4|ts|html|php)', src, re.IGNORECASE)):
+                    stream_url = src
+                    element = iframe
+                    break
+
+            if not stream_url:
+                for embed in soup.find_all('embed'):
+                    src = embed.get('src')
+                    if src and ("stream" in src.lower() or re.search(r'\.(m3u8|mp4|ts|html|php)', src, re.IGNORECASE)):
+                        stream_url = src
+                        element = embed
+                        break
+
+            if not stream_url:
+                for video in soup.find_all('video'):
+                    src = video.get('src')
+                    if src and ("stream" in src.lower() or re.search(r'\.(m3u8|mp4|ts)', src, re.IGNORECASE)):
+                        stream_url = src
+                        element = video
+                        break
+                    for source in video.find_all('source'):
+                        src = source.get('src')
+                        if src and ("stream" in src.lower() or re.search(r'\.(m3u8|mp4|ts)', src, re.IGNORECASE)):
+                            stream_url = src
+                            element = source
+                            break
+
+            # Estrai data e ora formattate
+            full_event_datetime_str = ""
+            event_date_comparable = "" # Conterrà "DD/MM" per il confronto
+            event_time_str = ""        # Conterrà "HH:MM"
+            date_span = soup.find('span', class_='uk-text-meta uk-text-small')
+            if date_span:
+                date_text = date_span.get_text(strip=True)
+                full_event_datetime_str, event_date_comparable = format_event_date(date_text)
+                if full_event_datetime_str:
+                    # Estrai solo l'orario (es. "20:45" da "20:45 23/07")
+                    time_match = re.match(r'(\d{1,2}:\d{2})', full_event_datetime_str)
+                    if time_match:
+                        event_time_str = time_match.group(1)
+     
+            # Estrai il titolo dell'evento dal tag <title>
+            event_title_from_html = "Unknown Event"
+            title_tag = soup.find('title')
+            if title_tag:
+                event_title_from_html = title_tag.get_text(strip=True)
+                event_title_from_html = re.sub(r'\s*\|\s*Sport Streaming\s*$', '', event_title_from_html, flags=re.IGNORECASE).strip()
+
+            # Estrai informazioni sulla lega/competizione
+            league_info = "Event" # Default
+            is_perma_channel = "perma" in event_url.lower()
+
+            if is_perma_channel:
+                if event_title_from_html and event_title_from_html != "Unknown Event":
+                    league_info = event_title_from_html
+                # Se il titolo del canale perma non è stato trovato, league_info resta "Event"
+            else:
+                # Per canali non-perma (eventi specifici), cerca lo span della lega/competizione
+                league_spans = soup.find_all(
+                    lambda tag: tag.name == 'span' and \
+                                'uk-text-small' in tag.get('class', []) and \
+                                'uk-text-meta' not in tag.get('class', []) # Escludi lo span della data
+                )
+                if league_spans:
+                    # Prendi il testo del primo span corrispondente, pulito
+                    league_info = ' '.join(league_spans[0].get_text(strip=True).split())
+                # Se lo span non viene trovato per un evento non-perma, league_info resta "Event"
+
+            return stream_url, event_date_comparable, event_time_str, event_title_from_html, league_info
+
+        except requests.RequestException as e:
+            print(f"Errore durante l'accesso a {event_url}: {e}")
+            return None, "", "", "Unknown Event", "Event"
+
+    # Funzione per aggiornare il file M3U8
+    def update_m3u_file(video_streams, m3u_file="eventisps.m3u8"):
+        REPO_PATH = os.getenv('GITHUB_WORKSPACE', '.')
+        file_path = os.path.join(REPO_PATH, m3u_file)
+
+        with open(file_path, "w", encoding="utf-8") as f:
+            f.write("#EXTM3U\n")
+
+            # Aggiungi il canale iniziale/informativo
+            f.write(f'#EXTINF:-1 tvg-name="SPORTSTREAMING" group-title="Eventi Live",SPORTSTREAMING\n')
+            f.write("https://example.com.m3u8\n\n")
+
+            perma_count = 1
+
+            for event_url, stream_url, event_time, event_title, league_info in video_streams:
+                if not stream_url:
+                    continue
+
+                # Determina se è un canale permanente o standard
+                is_perma = "perma" in event_url.lower()
+                if is_perma:
+                    image_url = f"https://sportstreaming.net/assets/img/live/perma/live{perma_count}.png"
+                    perma_count += 1
+                else:
+                    # Estrai il numero dall'URL per i canali standard (es. live-3 -> 3)
+                    match = re.search(r'live-(\d+)', event_url)
+                    if match:
+                        live_number = match.group(1)
+                        image_url = f"https://sportstreaming.net/assets/img/live/standard/live{live_number}.png"
+                    else:
+                        image_url = "https://sportstreaming.net/assets/img/live/standard/live1.png"  # Fallback
+
+                tvg_name_prefix = f"{event_time} " if event_time else ""
+                tvg_name_final = f"{event_title} | {league_info} | {tvg_name_prefix}".strip()
+                if not tvg_name_final: # Fallback se il titolo è vuoto
+                    tvg_name_final = "Eventi Live"
+
+                # Codifica gli header per l'URL
+                encoded_ua = quote_plus(headers["User-Agent"])
+                encoded_referer = quote_plus(headers["Referer"])
+                encoded_origin = quote_plus(headers["Origin"])
+
+                # Costruisci l'URL finale con il proxy e gli header
+                # stream_url qui è l'URL originale dello stream (es. https://xuione.sportstreaming.net/...)
+                final_stream_url = f"{PROXY}{stream_url}&h_user-agent={encoded_ua}&h_referer={encoded_referer}&h_origin={encoded_origin}"
+
+                group_title_text = "Sport" if is_perma else "Eventi Live"
+
+                f.write(f"#EXTINF:-1 tvg-name=\"{tvg_name_final} (SPS)\"group-title=\"{group_title_text}\" tvg-logo=\"{image_url}\",{tvg_name_final} (SPS)\n")
+                f.write(f"{final_stream_url}\n")
+                f.write("\n") # Aggiungi una riga vuota dopo ogni canale
+
+
+        print(f"File M3U8 aggiornato con successo: {file_path}")
+
+    # Esegui lo script
+    if __name__ == "__main__":
+        current_date_dd_mm = datetime.now().strftime("%d/%m")
+        print(f"Recupero eventi per il giorno: {current_date_dd_mm}")
+
+        event_pages = find_event_pages()
+        if not event_pages:
+            print("Nessuna pagina evento trovata.")
+        else:
+            video_streams = []
+            for event_url in event_pages:
+                # print(f"Analizzo: {event_url}") # Rimosso per output più pulito, riattivare se necessario
+                stream_url, event_date_str, event_time, event_title, league_info = get_event_details(event_url)
+                
+                if stream_url:
+                    is_perma = "perma" in event_url.lower()
+                    # Modifica: Includi solo se NON è perma E la data corrisponde
+                    if not is_perma and (event_date_str == current_date_dd_mm):
+                        print(f"Includo: {event_title} (URL: {event_url}, Data evento: {event_date_str})")
+                        video_streams.append((event_url, stream_url, event_time, event_title, league_info))
+                    elif is_perma:
+                        print(f"Scarto canale perma: {event_title} (URL: {event_url})")
+                    # else: # Evento non perma ma di un altro giorno
+                        # print(f"Scarto evento (data non corrispondente): {event_title} (Data evento: {event_date_str}, Richiesta: {current_date_dd_mm})")
+                else:
+                    print(f"Nessun flusso trovato per {event_url}")
+
+            if video_streams:
+                update_m3u_file(video_streams)
+            else:
+                print("Nessun flusso video trovato in tutte le pagine evento.")
     
 # Funzione per il quarto script (schedule_extractor.py)
 def schedule_extractor():
@@ -2715,7 +2978,7 @@ def removerworld():
     import os
     
     # Lista dei file da eliminare
-    files_to_delete = ["world.m3u8", "channels_italy.m3u8", "eventi.m3u8", "eventi.xml"]
+    files_to_delete = ["eventisps.m3u8", "world.m3u8", "channels_italy.m3u8", "eventi.m3u8", "eventi.xml"]
     
     for filename in files_to_delete:
         if os.path.exists(filename):
@@ -2731,7 +2994,7 @@ def remover():
     import os
     
     # Lista dei file da eliminare
-    files_to_delete = ["channels_italy.m3u8", "eventi.m3u8", "eventi.xml"]
+    files_to_delete = ["eventisps.m3u8", "channels_italy.m3u8", "eventi.m3u8", "eventi.xml"]
     
     for filename in files_to_delete:
         if os.path.exists(filename):
@@ -2749,6 +3012,12 @@ def main():
         schedule_success = schedule_extractor()
     except Exception as e:
         print(f"Errore durante l'esecuzione di schedule_extractor: {e}")
+        
+    try:
+        eventi_sps()
+    except Exception as e:
+        print(f"Errore durante l'esecuzione di eventi_sps: {e}")
+        return
 
     eventi_en = os.getenv("EVENTI_EN", "no").strip().lower()
     world_flag = os.getenv("WORLD", "si").strip().lower()
