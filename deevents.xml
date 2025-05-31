@@ -1,3 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tv>
+  <channel id="GermanWomensRegionalligaBorussiaDortmundvsSchalke04">
+    <display-name>German Womens Regionalliga : Borussia Dortmund vs Schalke 04</display-name>
+  </channel>
+  <programme start="20250601000000 +0200" stop="20250601150000 +0200" channel="GermanWomensRegionalligaBorussiaDortmundvsSchalke04">
+    <title lang="it">Fängt um 15:00 an.</title>
+    <desc lang="it">German Womens Regionalliga : Borussia Dortmund vs Schalke 04.</desc>
+    <category lang="it">Bekanntmachung</category>
+  </programme>
+  <programme start="20250601150000 +0200" stop="20250601170000 +0200" channel="GermanWomensRegionalligaBorussiaDortmundvsSchalke04">
+    <title lang="it">Live Streaming.</title>
+    <desc lang="it">German Womens Regionalliga : Borussia Dortmund vs Schalke 04</desc>
+    <category lang="it">Soccer</category>
+  </programme>
+  <channel id="AustraliaSupercarsChampionshipPerthSuper440">
+    <display-name>Australia Supercars Championship Perth Super 440</display-name>
+  </channel>
+  <programme start="20250601000000 +0200" stop="20250601091000 +0200" channel="AustraliaSupercarsChampionshipPerthSuper440">
+    <title lang="it">Fängt um 09:10 an.</title>
+    <desc lang="it">Australia Supercars Championship Perth Super 440.</desc>
+    <category lang="it">Bekanntmachung</category>
+  </programme>
+  <programme start="20250601091000 +0200" stop="20250601111000 +0200" channel="AustraliaSupercarsChampionshipPerthSuper440">
+    <title lang="it">Live Streaming.</title>
+    <desc lang="it">Australia Supercars Championship Perth Super 440</desc>
+    <category lang="it">Motorsport</category>
+  </programme>
+  <channel id="GTWorldChallengeItaliRace">
+    <display-name>GT World Challenge: Italië Race</display-name>
+  </channel>
+  <programme start="20250601000000 +0200" stop="20250601150000 +0200" channel="GTWorldChallengeItaliRace">
+    <title lang="it">Fängt um 15:00 an.</title>
+    <desc lang="it">GT World Challenge: Italië Race.</desc>
+    <category lang="it">Bekanntmachung</category>
+  </programme>
+  <programme start="20250601150000 +0200" stop="20250601170000 +0200" channel="GTWorldChallengeItaliRace">
+    <title lang="it">Live Streaming.</title>
+    <desc lang="it">GT World Challenge: Italië Race</desc>
+    <category lang="it">Motorsport</category>
+  </programme>
+  <channel id="EuropeanLeagueofFootballFrankfurtGalaxyvsParisMusketeers">
+    <display-name>European League of Football : Frankfurt Galaxy vs Paris Musketeers</display-name>
+  </channel>
+  <programme start="20250601000000 +0200" stop="20250601130000 +0200" channel="EuropeanLeagueofFootballFrankfurtGalaxyvsParisMusketeers">
+    <title lang="it">Fängt um 13:00 an.</title>
+    <desc lang="it">European League of Football : Frankfurt Galaxy vs Paris Musketeers.</desc>
+    <category lang="it">Bekanntmachung</category>
+  </programme>
+  <programme start="20250601130000 +0200" stop="20250601150000 +0200" channel="EuropeanLeagueofFootballFrankfurtGalaxyvsParisMusketeers">
+    <title lang="it">Live Streaming.</title>
+    <desc lang="it">European League of Football : Frankfurt Galaxy vs Paris Musketeers</desc>
+    <category lang="it">Am. Football</category>
+  </programme>
+  <channel id="AFLWestCoastEaglesvsGeelongCats">
+    <display-name>AFL : West Coast Eagles vs Geelong Cats</display-name>
+  </channel>
+  <programme start="20250601000000 +0200" stop="20250601112000 +0200" channel="AFLWestCoastEaglesvsGeelongCats">
+    <title lang="it">Fängt um 11:20 an.</title>
+    <desc lang="it">AFL : West Coast Eagles vs Geelong Cats.</desc>
+    <category lang="it">Bekanntmachung</category>
+  </programme>
+  <programme start="20250601112000 +0200" stop="20250601132000 +0200" channel="AFLWestCoastEaglesvsGeelongCats">
+    <title lang="it">Live Streaming.</title>
+    <desc lang="it">AFL : West Coast Eagles vs Geelong Cats</desc>
+    <category lang="it">Aussie rules</category>
+  </programme>
 </tv>
