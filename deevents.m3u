@@ -15,9 +15,6 @@ https://ddy6new.newkso.ru/ddy6/premium426/mono.m3u8
 #EXTINF:-1 tvg-name="Motorsport" group-title="Eventi Live",--- Motorsport ---
 https://exemple.m3u8
 
-#EXTINF:-1 tvg-id="formula1aramcospanishgrandprixqualifying" tvg-name="Formula 1 : Aramco Spanish Grand Prix - Qualifying (16:00)" tvg-logo="https://logospng.org/download/formula-1/formula-1-4096.png" group-title="Eventi Live",Formula 1 : Aramco Spanish Grand Prix - Qualifying (16:00)
-https://windnew.newkso.ru/wind/premium274/mono.m3u8
-
 #EXTINF:-1 tvg-id="indycarseriesseasonqualifyingsessionstreetsofdetroit" tvg-name="IndyCar Series Season Qualifying Session - Streets of Detroit (18:00)" tvg-logo="https://logodix.com/logo/679140.png" group-title="Eventi Live",IndyCar Series Season Qualifying Session - Streets of Detroit (18:00)
 https://windnew.newkso.ru/wind/premium274/mono.m3u8
 
@@ -27,10 +24,10 @@ https://dokko1new.newkso.ru/dokko1/premium556/mono.m3u8
 #EXTINF:-1 tvg-name="Darts" group-title="Eventi Live",--- Darts ---
 https://exemple.m3u8
 
-#EXTINF:-1 tvg-id="pdcdartround2europeantour2025" tvg-name="PDC Dart, round 2 | European Tour 2025 (19:00)" tvg-logo="https://images.squarespace-cdn.com/content/v1/641b2b45926a07705eaad097/944c64c4-4b0a-436a-b1a3-566a56e54f91/Professional_Darts_Corporation_logo.svg+copy.png?format=1500w" group-title="Eventi Live",PDC Dart, round 2 | European Tour 2025 (19:00)
+#EXTINF:-1 tvg-id="pdcdartround2europeantour2025" tvg-name="PDC Dart, round 2 | European Tour 2025 (19:00)" tvg-logo="https://mcdart.de/media/4d/c4/3e/1667565595/4441_Winmau_PDC_Dartboard_Surround_1.png" group-title="Eventi Live",PDC Dart, round 2 | European Tour 2025 (19:00)
 https://ddy6new.newkso.ru/ddy6/premium427/mono.m3u8
 
-#EXTINF:-1 tvg-id="pdcdartround2europeantour2025" tvg-name="PDC Dart, round 2 | European Tour 2025 (19:00)" tvg-logo="https://images.squarespace-cdn.com/content/v1/641b2b45926a07705eaad097/944c64c4-4b0a-436a-b1a3-566a56e54f91/Professional_Darts_Corporation_logo.svg+copy.png?format=1500w" group-title="Eventi Live",PDC Dart, round 2 | European Tour 2025 (19:00)
+#EXTINF:-1 tvg-id="pdcdartround2europeantour2025" tvg-name="PDC Dart, round 2 | European Tour 2025 (19:00)" tvg-logo="https://dartsturm.de/media/98/ce/36/1696498441/Winmau - PDC Clearzone Dart Teppichmatte.png" group-title="Eventi Live",PDC Dart, round 2 | European Tour 2025 (19:00)
 https://ddy6new.newkso.ru/ddy6/premium641/mono.m3u8
 
 #EXTINF:-1 tvg-name="Handball" group-title="Eventi Live",--- Handball ---
@@ -38,10 +35,4 @@ https://exemple.m3u8
 
 #EXTINF:-1 tvg-id="handballbundesligathwkielvshsvhamburg" tvg-name="Handball-Bundesliga : THW Kiel vs. HSV Hamburg (19:00)" tvg-logo="https://raw.githubusercontent.com/realbestia/TV/main/logos/THW Kiel_vs_HSV Hamburg.png" group-title="Eventi Live",Handball-Bundesliga : THW Kiel vs. HSV Hamburg (19:00)
 https://ddy6new.newkso.ru/ddy6/premium109/mono.m3u8
-
-#EXTINF:-1 tvg-name="Rugby League" group-title="Eventi Live",--- Rugby League ---
-https://exemple.m3u8
-
-#EXTINF:-1 tvg-id="superleaguerugbyleedsrhinosvswakefieldtrinity" tvg-name="Super League Rugby : Leeds Rhinos vs Wakefield Trinity (15:30)" tvg-logo="https://raw.githubusercontent.com/realbestia/TV/main/logos/Leeds Rhinos_vs_Wakefield Trinity.png" group-title="Eventi Live",Super League Rugby : Leeds Rhinos vs Wakefield Trinity (15:30)
-https://dokko1new.newkso.ru/dokko1/premium640/mono.m3u8
 
