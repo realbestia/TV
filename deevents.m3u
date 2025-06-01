@@ -1,2 +1,83 @@
 #EXTM3U x-tvg-url="https://raw.githubusercontent.com/realbestia/TV/refs/heads/main/deevents.xml
 
+#EXTINF:-1 tvg-name="Soccer" group-title="Live Events",--- Soccer ---
+https://exemple.m3u8
+
+#EXTINF:-1 tvg-id="germanwomensregionalligaborussiadortmundvsschalke04" tvg-name="German Womens Regionalliga : Borussia Dortmund vs Schalke 04 (15:00)" tvg-logo="https://raw.githubusercontent.com/realbestia/TV/main/logos/Borussia Dortmund_vs_Schalke 04.png" group-title="Live Events",German Womens Regionalliga : Borussia Dortmund vs Schalke 04 (15:00)
+https://nfsnew.newkso.ru/nfs/premium8/mono.m3u8
+
+#EXTINF:-1 tvg-id="uefau17europeanchampionshipfinalfranceu17vsportugalu17" tvg-name="UEFA U17 European Championship Final : France U17 vs Portugal U17 (20:30)" tvg-logo="https://raw.githubusercontent.com/realbestia/TV/main/logos/France U17_vs_Portugal U17.png" group-title="Live Events",UEFA U17 European Championship Final : France U17 vs Portugal U17 (20:30)
+https://dokko1new.newkso.ru/dokko1/premium571/mono.m3u8
+
+#EXTINF:-1 tvg-name="Motorsport" group-title="Live Events",--- Motorsport ---
+https://exemple.m3u8
+
+#EXTINF:-1 tvg-id="formula3aramcospanishgrandprixrace" tvg-name="Formula 3 : Aramco Spanish Grand Prix - Race (08:30)" tvg-logo="https://images.seeklogo.com/logo-png/5/2/formula-3-euro-series-logo-png_seeklogo-56757.png" group-title="Live Events",Formula 3 : Aramco Spanish Grand Prix - Race (08:30)
+https://windnew.newkso.ru/wind/premium274/mono.m3u8
+
+#EXTINF:-1 tvg-id="australiasupercarschampionshipperthsuper440" tvg-name="Australia Supercars Championship Perth Super 440 (09:10)" tvg-logo="https://www.thesportsdb.com/images/media/league/badge/z0c7in1618738861.png" group-title="Live Events",Australia Supercars Championship Perth Super 440 (09:10)
+https://dokko1new.newkso.ru/dokko1/premium640/mono.m3u8
+
+#EXTINF:-1 tvg-id="formula2aramcospanishgrandprixrace" tvg-name="Formula 2 : Aramco Spanish Grand Prix - Race (09:55)" tvg-logo="https://www.thesportsdb.com/images/media/league/badge/3iwfjg1536242234.png" group-title="Live Events",Formula 2 : Aramco Spanish Grand Prix - Race (09:55)
+https://windnew.newkso.ru/wind/premium274/mono.m3u8
+
+#EXTINF:-1 tvg-id="porschesupercupseason3rdroundcircuitdebarcelonacatalunya" tvg-name="Porsche Supercup Season 3rd Round - Circuit de Barcelona-Catalunya (11:40)" tvg-logo="http://www.paradigmshiftracing.com/uploads/4/8/2/6/48261497/s120032300953134409_p145_i32_w600.png" group-title="Live Events",Porsche Supercup Season 3rd Round - Circuit de Barcelona-Catalunya (11:40)
+https://windnew.newkso.ru/wind/premium274/mono.m3u8
+
+#EXTINF:-1 tvg-id="porschesupercupseason3rdroundcircuitdebarcelonacatalunya" tvg-name="Porsche Supercup Season 3rd Round - Circuit de Barcelona-Catalunya (11:40)" tvg-logo="http://www.paradigmshiftracing.com/uploads/4/8/2/6/48261497/s120032300953134409_p145_i32_w600.png" group-title="Live Events",Porsche Supercup Season 3rd Round - Circuit de Barcelona-Catalunya (11:40)
+https://dokko1new.newkso.ru/dokko1/premium556/mono.m3u8
+
+#EXTINF:-1 tvg-id="formula1aramcospanishgrandprixgrandprixsunday" tvg-name="Formula 1 : Aramco Spanish Grand Prix - Grand Prix Sunday (14:00)" tvg-logo="https://logospng.org/download/formula-1/formula-1-4096.png" group-title="Live Events",Formula 1 : Aramco Spanish Grand Prix - Grand Prix Sunday (14:00)
+https://windnew.newkso.ru/wind/premium274/mono.m3u8
+
+#EXTINF:-1 tvg-id="formula1aramcospanishgrandprixrace" tvg-name="Formula 1 : Aramco Spanish Grand Prix - Race (15:00)" tvg-logo="https://logospng.org/download/formula-1/formula-1-4096.png" group-title="Live Events",Formula 1 : Aramco Spanish Grand Prix - Race (15:00)
+https://windnew.newkso.ru/wind/premium274/mono.m3u8
+
+#EXTINF:-1 tvg-id="gtworldchallengeitalirace" tvg-name="GT World Challenge: Italië Race (15:00)" tvg-logo="https://www.gt-world-challenge-europe.com/images/bgts/gtwc-europe.png" group-title="Live Events",GT World Challenge: Italië Race (15:00)
+https://ddy6new.newkso.ru/ddy6/premium557/mono.m3u8
+
+#EXTINF:-1 tvg-id="indycarseriesseasonstreetsofdetroitrace" tvg-name="IndyCar Series Season - Streets of Detroit Race (18:30)" tvg-logo="https://logodix.com/logo/585799.png" group-title="Live Events",IndyCar Series Season - Streets of Detroit Race (18:30)
+https://windnew.newkso.ru/wind/premium274/mono.m3u8
+
+#EXTINF:-1 tvg-id="indycarseriesseasonstreetsofdetroitrace" tvg-name="IndyCar Series Season - Streets of Detroit Race (18:30)" tvg-logo="https://logodix.com/logo/585799.png" group-title="Live Events",IndyCar Series Season - Streets of Detroit Race (18:30)
+https://dokko1new.newkso.ru/dokko1/premium556/mono.m3u8
+
+#EXTINF:-1 tvg-name="Am. Football" group-title="Live Events",--- Am. Football ---
+https://exemple.m3u8
+
+#EXTINF:-1 tvg-id="europeanleagueoffootballfrankfurtgalaxyvsparismusketeers" tvg-name="European League of Football : Frankfurt Galaxy vs Paris Musketeers (13:00)" tvg-logo="https://raw.githubusercontent.com/realbestia/TV/main/logos/Frankfurt Galaxy_vs_Paris Musketeers.png" group-title="Live Events",European League of Football : Frankfurt Galaxy vs Paris Musketeers (13:00)
+https://nfsnew.newkso.ru/nfs/premium15/mono.m3u8
+
+#EXTINF:-1 tvg-id="europeanleagueoffootballrheinfirevsviennavikings" tvg-name="European League of Football : Rhein Fire vs. Vienna Vikings (16:25)" tvg-logo="https://images.seeklogo.com/logo-png/11/3/rhein-fire-logo-png_seeklogo-118246.png" group-title="Live Events",European League of Football : Rhein Fire vs. Vienna Vikings (16:25)
+https://nfsnew.newkso.ru/nfs/premium15/mono.m3u8
+
+#EXTINF:-1 tvg-name="Aussie rules" group-title="Live Events",--- Aussie rules ---
+https://exemple.m3u8
+
+#EXTINF:-1 tvg-id="aflwestcoasteaglesvsgeelongcats" tvg-name="AFL : West Coast Eagles vs Geelong Cats (11:20)" tvg-logo="https://raw.githubusercontent.com/realbestia/TV/main/logos/West Coast Eagles_vs_Geelong Cats.png" group-title="Live Events",AFL : West Coast Eagles vs Geelong Cats (11:20)
+https://dokko1new.newkso.ru/dokko1/premium640/mono.m3u8
+
+#EXTINF:-1 tvg-name="Darts" group-title="Live Events",--- Darts ---
+https://exemple.m3u8
+
+#EXTINF:-1 tvg-id="pdcdartround2europeantour2025" tvg-name="PDC Dart, round 2 | European Tour 2025 (13:00)" tvg-logo="https://images.squarespace-cdn.com/content/v1/641b2b45926a07705eaad097/944c64c4-4b0a-436a-b1a3-566a56e54f91/Professional_Darts_Corporation_logo.svg+copy.png?format=1500w" group-title="Live Events",PDC Dart, round 2 | European Tour 2025 (13:00)
+https://ddy6new.newkso.ru/ddy6/premium427/mono.m3u8
+
+#EXTINF:-1 tvg-id="pdcdartround2europeantour2025" tvg-name="PDC Dart, round 2 | European Tour 2025 (13:00)" tvg-logo="https://images.squarespace-cdn.com/content/v1/641b2b45926a07705eaad097/944c64c4-4b0a-436a-b1a3-566a56e54f91/Professional_Darts_Corporation_logo.svg+copy.png?format=1500w" group-title="Live Events",PDC Dart, round 2 | European Tour 2025 (13:00)
+https://ddy6new.newkso.ru/ddy6/premium641/mono.m3u8
+
+#EXTINF:-1 tvg-id="pdcdartround2europeantour2025" tvg-name="PDC Dart, round 2 | European Tour 2025 (19:00)" tvg-logo="https://www.thesportsdb.com/images/media/league/badge/isf07m1555602216.png" group-title="Live Events",PDC Dart, round 2 | European Tour 2025 (19:00)
+https://ddy6new.newkso.ru/ddy6/premium427/mono.m3u8
+
+#EXTINF:-1 tvg-id="pdcdartround2europeantour2025" tvg-name="PDC Dart, round 2 | European Tour 2025 (19:00)" tvg-logo="https://images.squarespace-cdn.com/content/v1/641b2b45926a07705eaad097/944c64c4-4b0a-436a-b1a3-566a56e54f91/Professional_Darts_Corporation_logo.svg+copy.png?format=1500w" group-title="Live Events",PDC Dart, round 2 | European Tour 2025 (19:00)
+https://ddy6new.newkso.ru/ddy6/premium641/mono.m3u8
+
+#EXTINF:-1 tvg-name="Handball" group-title="Live Events",--- Handball ---
+https://exemple.m3u8
+
+#EXTINF:-1 tvg-id="ehfwomenschampionsleaguebronzematch" tvg-name="EHF Women's Champions League Bronze match (15:00)" tvg-logo="https://images.seeklogo.com/logo-png/32/2/ehf-womens-cup-winners-cup-logo-png_seeklogo-326901.png?v=1957670004865924248" group-title="Live Events",EHF Women's Champions League Bronze match (15:00)
+https://ddy6new.newkso.ru/ddy6/premium426/mono.m3u8
+
+#EXTINF:-1 tvg-id="ehfchampionsleagueffinale" tvg-name="EHF Champions League (F) | Finale (17:45)" tvg-logo="https://www.thesportsdb.com/images/media/league/badge/tmj7fw1623953614.png" group-title="Live Events",EHF Champions League (F) | Finale (17:45)
+https://ddy6new.newkso.ru/ddy6/premium426/mono.m3u8
+
